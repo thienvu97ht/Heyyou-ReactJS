@@ -37,3 +37,8 @@
     transform: rotate(360deg);
   }
 }
+
+@font-face {
+  font-family: "SVN-Veneer";
+  src: local("SVN-Veneer"), url(./fonts/SVN-Veneer.ttf) format("truetype");
+}
