@@ -6,6 +6,12 @@ export const useStyles = makeStyles((theme) => ({
     color: "#fff",
     display: "flex",
     justifyContent: "center",
+
+    position: "fixed",
+    zIndex: "10",
+    left: "0",
+    top: "0",
+    right: "0",
   },
 
   header: {
