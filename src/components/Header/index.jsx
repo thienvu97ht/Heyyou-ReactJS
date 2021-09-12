@@ -1,6 +1,7 @@
 import {
   Badge,
   Box,
+  Container,
   IconButton,
   Menu,
   MenuItem,
@@ -21,16 +22,15 @@ const StyledBadge = withStyles((theme) => ({
   },
 }))(Badge);
 
-const StyleMenus = withStyles((theme) => ({
+const StyleMenus = withStyles(() => ({
   paper: {
     backgroundColor: "rgba(255,255,255,0.7)",
   },
 }))(Menu);
 
-function Header(props) {
+function Header() {
   const classes = useStyles();
 
-  const [openDrawer, setOpenDrawer] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleCloseMenu = () => {
@@ -44,7 +44,7 @@ function Header(props) {
   return (
     <>
       <Box className={classes.root}>
-        <Box className={classes.header}>
+        <Container className={classes.header}>
           <img
             src="https://theme.hstatic.net/200000031420/1000719377/14/logo.png?v=154"
             alt="Dương Vũ"
@@ -92,7 +92,7 @@ function Header(props) {
               </IconButton>
             </Box>
           </Box>
-        </Box>
+        </Container>
       </Box>
 
       <StyleMenus

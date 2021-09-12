@@ -1,4 +1,4 @@
-import { Badge, makeStyles, withStyles } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 
 export const useStyles = makeStyles((theme) => ({
   root: {
@@ -14,7 +14,7 @@ export const useStyles = makeStyles((theme) => ({
     alignItems: "center",
 
     height: "100%",
-    width: "1140px",
+    // width: "1140px",
 
     "& img": {
       maxWidth: "80px",
@@ -83,9 +83,7 @@ export const useStyles = makeStyles((theme) => ({
     },
   },
 
-  iconButton: {
-    // marginRight: theme.spacing(2),
-  },
+  iconButton: {},
 
   title: {
     padding: theme.spacing(0, 1),
