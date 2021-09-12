@@ -6,4 +6,8 @@ export const useStyles = makeStyles((theme) => ({
   mb4: {
     marginBottom: theme.spacing(4),
   },
+
+  mb8: {
+    marginBottom: theme.spacing(8),
+  },
 }));

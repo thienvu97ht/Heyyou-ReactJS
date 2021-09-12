@@ -5,6 +5,7 @@ import BestSellerFeature from "../../../BestSeller";
 import NewProductsFature from "../../../NewProducts";
 import Banner from "../../components/Banner";
 import Brand from "../../components/Brand";
+import NewLetter from "../../components/NewLetter";
 import SliderBanner from "../../components/SliderBanner/index";
 import { useStyles } from "./style";
 
@@ -17,7 +18,8 @@ function HomePage(props) {
       <Banner imgs={bannerImg} className={classes.mb4} />
       <NewProductsFature className={classes.mb4} />
       <BestSellerFeature className={classes.mb4} />
-      <Brand imgs={brandImg} className={classes.mb4} />
+      <Brand imgs={brandImg} className={classes.mb8} />
+      <NewLetter className={classes.mb4} />
     </Box>
   );
 }
