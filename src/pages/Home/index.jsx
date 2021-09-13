@@ -6,10 +6,9 @@ import BestSellerFeature from "./components/BestSeller";
 import Brand from "./components/Brand";
 import NewProductsFature from "./components/NewProducts";
 import SliderBanner from "./components/SliderBanner";
-
 import { useStyles } from "./style";
 
-function HomePage(props) {
+function HomePage() {
   const classes = useStyles();
 
   return (
