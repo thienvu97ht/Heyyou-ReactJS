@@ -26,7 +26,7 @@ function SliderBanner({ imgs = [], className }) {
   return (
     <Slider {...settings} className={className}>
       {imgs.map((img, index) => (
-        <Box key={index}>
+        <Box key={index} className={classes.imgBox}>
           <img src={img} alt="" className={classes.img} />
         </Box>
       ))}

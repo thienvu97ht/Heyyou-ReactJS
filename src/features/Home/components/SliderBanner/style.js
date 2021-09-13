@@ -3,7 +3,13 @@ import { makeStyles } from "@material-ui/core";
 export const useStyles = makeStyles((theme) => ({
   root: {},
 
-  img: {
-    width: "100%",
+  imgBox: {
+    "&:focus-visible": {
+      outline: "none",
+    },
+
+    "& > img": {
+      width: "100%",
+    },
   },
 }));

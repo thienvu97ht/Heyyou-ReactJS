@@ -1,12 +1,12 @@
 import { Box } from "@material-ui/core";
 import React from "react";
 import Footer from "../../../../components/Footer";
+import NewLetter from "../../../../components/NewLetter";
 import { bannerImg, brandImg, sliderImg } from "../../../../constants";
 import BestSellerFeature from "../../../BestSeller";
 import NewProductsFature from "../../../NewProducts";
 import Banner from "../../components/Banner";
 import Brand from "../../components/Brand";
-import NewLetter from "../../components/NewLetter";
 import SliderBanner from "../../components/SliderBanner/index";
 import { useStyles } from "./style";
 
