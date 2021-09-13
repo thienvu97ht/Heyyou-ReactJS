@@ -35,7 +35,7 @@ export const useStyles = makeStyles((theme) => ({
       padding: 0,
 
       "& > li": {
-        marginLeft: theme.spacing(2),
+        marginLeft: theme.spacing(3),
         cursor: "pointer",
         display: "flex",
         alignItems: "center",
@@ -54,13 +54,19 @@ export const useStyles = makeStyles((theme) => ({
 
   menuProducts: {
     display: "none",
-    backgroundColor: "rgba(0,0,0,0.85)",
+    backgroundColor: "rgba(0,0,0,0.8)",
 
     opacity: 0,
     transitionDelay: "1s",
 
+    "& > li": {
+      "& > p": {
+        width: "100px",
+      },
+    },
+
     "& li:hover": {
-      backgroundColor: "rgba(0,0,0,0.9)",
+      backgroundColor: "rgba(0,0,0,0.85)",
     },
   },
 
