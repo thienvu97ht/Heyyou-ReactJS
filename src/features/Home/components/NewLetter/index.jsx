@@ -18,8 +18,10 @@ function NewLetter({ className }) {
         </Typography>
 
         <Box className={classes.formBox}>
-          <input placeholder="Nhập email của bạn" />
-          <button>Đăng kí</button>
+          <form>
+            <input type="email" placeholder="Nhập email của bạn" required />
+            <button type="submit">Đăng kí</button>
+          </form>
         </Box>
       </Box>
     </Container>

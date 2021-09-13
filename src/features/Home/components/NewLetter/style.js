@@ -41,29 +41,31 @@ export const useStyles = makeStyles((theme) => ({
   },
 
   formBox: {
-    "& > input": {
-      width: "435px",
-      border: "none",
-      borderBottom: "1px solid #e5e5e5",
-      height: "48px",
-      padding: "0 10px",
-      fontSize: "15px",
+    "& > form": {
+      "& > input": {
+        width: "435px",
+        border: "none",
+        borderBottom: "1px solid #e5e5e5",
+        height: "48px",
+        padding: "0 10px",
+        fontSize: "15px",
 
-      "&:focus-visible": {
-        outline: "none",
+        "&:focus-visible": {
+          outline: "none",
+        },
       },
-    },
 
-    "& button": {
-      borderRadius: "4px",
-      border: "none",
-      background: "#000",
-      color: "#fff",
-      fontSize: "15px",
-      height: "48px",
-      cursor: "pointer",
-      padding: "0 32px",
-      marginLeft: "15px",
+      "& button": {
+        borderRadius: "4px",
+        border: "none",
+        background: "#000",
+        color: "#fff",
+        fontSize: "15px",
+        height: "48px",
+        cursor: "pointer",
+        padding: "0 32px",
+        marginLeft: "15px",
+      },
     },
   },
 }));

@@ -1,4 +1,4 @@
-import { Box, Container } from "@material-ui/core";
+import { Box, Container, Typography } from "@material-ui/core";
 import React from "react";
 import { useStyles } from "./style";
 
@@ -7,7 +7,11 @@ function BestSellerFeature({ className }) {
 
   return (
     <Box className={className}>
-      <Container className={classes.root}>BestSellerFeature</Container>
+      <Container className={classes.root}>
+        <Box className={classes.titleBox}>
+          <Typography>NHỮNG SẢN PHẨM BÁN CHẠY NHẤT</Typography>
+        </Box>
+      </Container>
     </Box>
   );
 }

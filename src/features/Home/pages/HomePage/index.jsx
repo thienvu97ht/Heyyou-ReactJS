@@ -1,5 +1,6 @@
 import { Box } from "@material-ui/core";
 import React from "react";
+import Footer from "../../../../components/Footer";
 import { bannerImg, brandImg, sliderImg } from "../../../../constants";
 import BestSellerFeature from "../../../BestSeller";
 import NewProductsFature from "../../../NewProducts";
@@ -19,7 +20,8 @@ function HomePage(props) {
       <NewProductsFature className={classes.mb4} />
       <BestSellerFeature className={classes.mb4} />
       <Brand imgs={brandImg} className={classes.mb8} />
-      <NewLetter className={classes.mb4} />
+      <NewLetter className={classes.mb8} />
+      <Footer />
     </Box>
   );
 }
