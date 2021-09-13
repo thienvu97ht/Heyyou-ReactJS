@@ -1,7 +1,9 @@
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
+import Footer from "./components/Footer";
 import Header from "./components/Header";
-import HomeFeature from "./features/Home";
+import NewLetter from "./components/NewLetter";
+import HomePage from "./pages/Home";
 
 function App() {
   return (
@@ -9,8 +11,11 @@ function App() {
       <Header />
 
       <Switch>
-        <Route path="/" component={HomeFeature} exact />
+        <Route path="/" component={HomePage} exact />
       </Switch>
+
+      <NewLetter />
+      <Footer />
     </div>
   );
 }

@@ -1,7 +1,9 @@
 import { makeStyles } from "@material-ui/core";
 
 export const useStyles = makeStyles((theme) => ({
-  root: {},
+  root: {
+    marginBottom: theme.spacing(8),
+  },
 
   titleBox: {
     marginBottom: "50px",

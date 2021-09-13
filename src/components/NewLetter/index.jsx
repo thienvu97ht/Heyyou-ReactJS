@@ -1,14 +1,12 @@
-import { Box, Button, Container, Typography } from "@material-ui/core";
+import { Box, Container, Typography } from "@material-ui/core";
 import React from "react";
 import { useStyles } from "./style";
 
-NewLetter.propTypes = {};
-
-function NewLetter({ className }) {
+function NewLetter() {
   const classes = useStyles();
 
   return (
-    <Container className={className}>
+    <Container className={classes.root}>
       <Box className={classes.titleBox}>
         <Typography>ĐĂNG KÝ NHẬN TIN</Typography>
       </Box>
