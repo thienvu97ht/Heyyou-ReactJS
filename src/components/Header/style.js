@@ -40,9 +40,11 @@ export const useStyles = makeStyles((theme) => ({
         display: "flex",
         alignItems: "center",
 
-        "& > p": {
+        "& > a": {
           fontSize: "17px",
           fontWeight: "300",
+          textDecoration: "none",
+          color: "white",
 
           "&:hover": {
             textDecoration: "underline",

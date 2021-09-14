@@ -11,6 +11,7 @@ import {
 } from "@material-ui/core";
 import { Search, ShoppingCart } from "@material-ui/icons";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { useStyles } from "./style";
 
 const StyledBadge = withStyles((theme) => ({
@@ -51,10 +52,10 @@ function Header() {
           />
           <Box component="ul">
             <Box component="li">
-              <Typography>TRANG CHỦ</Typography>
+              <Link to="/">TRANG CHỦ</Link>
             </Box>
             <Box component="li" className={classes.subMenu}>
-              <Typography>SẢN PHẨM</Typography>
+              <Link to="/products">SẢN PHẨM</Link>
               <Box component="ul" className={classes.menuProducts}>
                 <Box component="li">
                   <Typography>TEE</Typography>
@@ -74,10 +75,10 @@ function Header() {
               </Box>
             </Box>
             <Box component="li">
-              <Typography>GIỚI THIỆU</Typography>
+              <Link to="/abouts">GIỚI THIỆU</Link>
             </Box>
             <Box component="li">
-              <Typography>ĐĂNG NHẬP / ĐĂNG KÝ</Typography>
+              <Link to="/auth">ĐĂNG NHẬP / ĐĂNG KÝ</Link>
             </Box>
             <Box component="li" style={{ marginLeft: 0 }}>
               <IconButton color="inherit" onClick={handleSearchClick}>

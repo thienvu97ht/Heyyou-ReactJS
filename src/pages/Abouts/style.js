@@ -2,13 +2,12 @@ import { makeStyles } from "@material-ui/core";
 
 export const useStyles = makeStyles((theme) => ({
   root: {
-    paddingTop: "100px",
+    paddingTop: "120px",
+    marginBottom: "50px",
   },
 
   titleBox: {
-    marginBottom: "50px",
     textAlign: "center",
-    display: "block",
 
     "& > p": {
       fontSize: "40px",
@@ -17,6 +16,15 @@ export const useStyles = makeStyles((theme) => ({
       paddingBottom: "15px",
       position: "relative",
       display: "inline-block",
+    },
+  },
+
+  aboutsContent: {
+    textAlign: "center",
+
+    "& > p": {
+      color: "#484848",
+      marginBottom: "15px",
     },
   },
 }));
