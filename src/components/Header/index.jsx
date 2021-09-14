@@ -80,7 +80,7 @@ function Header() {
             <Box component="li">
               <Link to="/auth">ĐĂNG NHẬP / ĐĂNG KÝ</Link>
             </Box>
-            <Box component="li" style={{ marginLeft: 0 }}>
+            <Box component="li" style={{ marginLeft: "10px" }}>
               <IconButton color="inherit" onClick={handleSearchClick}>
                 <Search />
               </IconButton>

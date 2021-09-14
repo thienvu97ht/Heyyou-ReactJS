@@ -3,9 +3,10 @@ import "./App.css";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import NewLetter from "./components/NewLetter";
-import AboutsPage from "./pages/Abouts";
-import HomePage from "./pages/Home";
 import NotFound from "./components/NotFound";
+import AboutsPage from "./pages/Abouts";
+import AuthPage from "./pages/Auth";
+import HomePage from "./pages/Home";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Switch>
         <Route path="/" component={HomePage} exact />
         <Route path="/abouts" component={AboutsPage} />
+        <Route path="/auth" component={AuthPage} />
 
         <Route component={NotFound} />
       </Switch>
