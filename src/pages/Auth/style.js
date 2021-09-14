@@ -78,7 +78,10 @@ export const useStyles = makeStyles((theme) => ({
     fontSize: "16px",
     color: "#666666",
     textTransform: "uppercase",
-    marginBottom: "20px",
     marginTop: "20px",
+  },
+
+  loginBox: {
+    width: "410px",
   },
 }));
