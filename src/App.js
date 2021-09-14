@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import NewLetter from "./components/NewLetter";
 import AboutsPage from "./pages/Abouts";
 import HomePage from "./pages/Home";
+import NotFound from "./components/NotFound";
 
 function App() {
   return (
@@ -14,6 +15,8 @@ function App() {
       <Switch>
         <Route path="/" component={HomePage} exact />
         <Route path="/abouts" component={AboutsPage} />
+
+        <Route component={NotFound} />
       </Switch>
 
       <NewLetter />
