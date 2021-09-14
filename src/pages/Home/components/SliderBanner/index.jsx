@@ -5,6 +5,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import { useStyles } from "./style";
+import "./style.scss";
 
 SliderBanner.propTypes = {
   imgs: PropTypes.array,
@@ -14,11 +15,11 @@ function SliderBanner({ imgs = [], className }) {
   const classes = useStyles();
 
   const settings = {
-    dots: false,
+    dots: true,
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: true,
+    autoplay: false,
     speed: 2000,
     autoplaySpeed: 4000,
   };
