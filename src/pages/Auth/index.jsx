@@ -1,11 +1,19 @@
 import { Box, Container, Grid, Typography } from "@material-ui/core";
-import React from "react";
-import LoginForm from "./components/LoginForm";
-import RegisterForm from "./components/RegisterForm";
+import React, { useState } from "react";
+import ForgotPassword from "./components/ForgotPassword";
+import Login from "./components/Login";
+import Register from "./components/Register";
 import { useStyles } from "./style";
+
+const MODE = {
+  LOGIN: "login",
+  FORGOTPASSWORD: "forgotPassword",
+};
 
 function AuthPage(props) {
   const classes = useStyles();
+
+  const [mode, setMode] = useState(MODE.LOGIN);
 
   return (
     <Container className={classes.root}>
@@ -22,16 +30,38 @@ function AuthPage(props) {
       <Box className={classes.authContainer}>
         <Grid container spacing={3}>
           <Grid item lg={6} md={6} sm={12} className={classes.loginBox}>
-            <Typography className={classes.titleBox}>ĐĂNG NHẬP</Typography>
+            {mode === MODE.LOGIN && (
+              <>
+                <Typography className={classes.titleBox}>ĐĂNG NHẬP</Typography>
+                <Login />
+                <button
+                  className={classes.forgetPwd}
+                  onClick={() => setMode(MODE.FORGOTPASSWORD)}>
+                  Quên mật khẩu?
+                </button>
+              </>
+            )}
 
-            <LoginForm />
+            {mode === MODE.FORGOTPASSWORD && (
+              <>
+                <Typography className={classes.titleBox}>
+                  QUÊN MẬT KHẨU
+                </Typography>
+                <ForgotPassword />
+                <button
+                  className={classes.forgetPwd}
+                  onClick={() => setMode(MODE.LOGIN)}>
+                  Hủy
+                </button>
+              </>
+            )}
           </Grid>
           <Grid item lg={6} md={6} sm={12}>
             <Typography className={classes.titleBox}>
               ĐĂNG KÝ THÀNH VIÊN MỚI
             </Typography>
 
-            <RegisterForm />
+            <Register />
           </Grid>
         </Grid>
       </Box>

@@ -73,6 +73,10 @@ export const useStyles = makeStyles((theme) => ({
     },
   },
 
+  loginBox: {
+    textAlign: "center",
+  },
+
   titleBox: {
     textAlign: "center",
     fontSize: "16px",
@@ -81,7 +85,12 @@ export const useStyles = makeStyles((theme) => ({
     marginTop: "20px",
   },
 
-  loginBox: {
-    width: "410px",
+  forgetPwd: {
+    border: "none",
+    backgroundColor: "#fff",
+    textDecoration: "underline",
+    color: "#434343",
+    fontSize: "14px",
+    cursor: "pointer",
   },
 }));

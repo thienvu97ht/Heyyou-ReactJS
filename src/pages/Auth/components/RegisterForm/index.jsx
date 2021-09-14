@@ -1,6 +1,5 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Avatar, Button, LinearProgress, Typography } from "@material-ui/core";
-import { LockOutlined } from "@material-ui/icons";
+import { Button, LinearProgress } from "@material-ui/core";
 import PropTypes from "prop-types";
 import React from "react";
 import { useForm } from "react-hook-form";
@@ -19,10 +18,10 @@ function RegisterForm(props) {
   const schema = yup.object().shape({
     fullName: yup
       .string()
-      .required("Please enter your full name.")
+      .required("Vui lòng nhập tên đầy đủ của bạn.")
       .test(
-        "shold has at least tow words",
-        "Please enter at least tow words",
+        "Nên có ít nhất hai từ",
+        "Vui lòng nhập ít nhất hai từ",
         (value) => {
           return value.split(" ").length >= 2;
         }
@@ -30,25 +29,25 @@ function RegisterForm(props) {
 
     email: yup
       .string()
-      .required("Please enter your email")
-      .email("Please enter an valid email address"),
+      .required("Vui lòng nhập email của bạn")
+      .email("Vui lòng nhập một địa chỉ email hợp lệ"),
 
-    password: yup
+    passwordRegister: yup
       .string()
-      .required("Please enter your password")
-      .min(6, "Please enter at least 6 characters"),
+      .required("Vui lòng nhập mật khẩu của bạn")
+      .min(6, "Vui lòng nhập ít nhất 6 ký tự"),
 
     retypePassword: yup
       .string()
-      .required("Please retype your password")
-      .oneOf([yup.ref("password")], "Password does not match"),
+      .required("Vui lòng nhập lại mật khẩu của bạn")
+      .oneOf([yup.ref("passwordRegister")], "Mật khẩu không khớp"),
   });
 
   const form = useForm({
     defaultValues: {
       fullName: "",
       email: "",
-      password: "",
+      passwordRegister: "",
       retypePassword: "",
     },
     reValidateMode: "onSubmit",
@@ -71,7 +70,7 @@ function RegisterForm(props) {
       <form onSubmit={form.handleSubmit(handleSubmit)}>
         <InputField name="fullName" label="Họ và tên" form={form} />
         <InputField name="email" label="Email" form={form} />
-        <PasswordField name="password" label="Mật khẩu" form={form} />
+        <PasswordField name="passwordRegister" label="Mật khẩu" form={form} />
         <PasswordField
           name="retypePassword"
           label="Nhập lại mật khẩu"

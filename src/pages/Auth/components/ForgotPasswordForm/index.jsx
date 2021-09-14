@@ -4,15 +4,14 @@ import PropTypes from "prop-types";
 import React from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
-import InputField from "../../../../components/form-controls/InputField";
-import PasswordField from "../../../../components/form-controls/PasswordField";
+import InputField from "../../../../components/form-controls/InputField/index.jsx";
 import { useStyle } from "./style.js";
 
-LoginForm.propTypes = {
+ForgotPasswordForm.propTypes = {
   onSubmit: PropTypes.func,
 };
 
-function LoginForm(props) {
+function ForgotPasswordForm(props) {
   const classes = useStyle();
 
   const schema = yup.object().shape({
@@ -20,14 +19,11 @@ function LoginForm(props) {
       .string()
       .required("Vui lòng nhập email của bạn")
       .email("Vui lòng nhập một địa chỉ email hợp lệ"),
-
-    password: yup.string().required("Vui lòng nhập mật khẩu của bạn"),
   });
 
   const form = useForm({
     defaultValues: {
       identifier: "",
-      password: "",
     },
     reValidateMode: "onSubmit",
     resolver: yupResolver(schema),
@@ -48,7 +44,6 @@ function LoginForm(props) {
 
       <form onSubmit={form.handleSubmit(handleSubmit)}>
         <InputField name="identifier" label="Email" form={form} />
-        <PasswordField name="password" label="Mật khẩu" form={form} />
 
         <Button
           type="submit"
@@ -58,11 +53,11 @@ function LoginForm(props) {
           fullWidth
           disabled={isSubmitting}
           size="large">
-          Đăng nhập
+          Gửi
         </Button>
       </form>
     </div>
   );
 }
 
-export default LoginForm;
+export default ForgotPasswordForm;
