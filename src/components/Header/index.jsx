@@ -32,8 +32,7 @@ const StyleMenus = withStyles(() => ({
 
 function Header() {
   const loggedInUser = useSelector((state) => state.user.current);
-  const isLoggedIn = !!loggedInUser.username;
-  console.log(isLoggedIn);
+  const isLoggedIn = !!loggedInUser.email;
 
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);

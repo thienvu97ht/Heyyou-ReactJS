@@ -4,18 +4,11 @@ import StorageKeys from "constants/storage-keys";
 
 export const register = createAsyncThunk("user/register", async (payload) => {
   const data = await userApi.register(payload);
-
-  // Save data to local storage
-  //   localStorage.setItem(StorageKeys.TOKEN, data.jwt);
-  //   localStorage.setItem(StorageKeys.USER, JSON.stringify(data.user));
-
   return data;
 });
 
 export const login = createAsyncThunk("user/login", async (payload) => {
   const data = await userApi.checkLogin(payload);
-
-  console.log(data);
 
   // Save data to local storage
   localStorage.setItem(StorageKeys.TOKEN, data.access_token);
@@ -40,10 +33,6 @@ const userSlice = createSlice({
     },
   },
   extraReducers: {
-    // [register.fulfilled]: (state, action) => {
-    //   state.current = action.payload;
-    // },
-
     [login.fulfilled]: (state, action) => {
       state.current = action.payload;
     },

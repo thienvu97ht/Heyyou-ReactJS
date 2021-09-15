@@ -18,7 +18,10 @@ function Login() {
       unwrapResult(resultAction);
 
       // Về trang chủ
-      enqueueSnackbar("Đăng nhập thành công", { variant: "success" });
+      enqueueSnackbar("Đăng nhập thành công", {
+        variant: "success",
+        autoHideDuration: 2000,
+      });
       history.push("/");
     } catch (error) {
       enqueueSnackbar("Đăng nhập thất bại", { variant: "error" });
