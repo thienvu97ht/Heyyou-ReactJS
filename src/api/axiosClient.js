@@ -2,7 +2,7 @@ import axios from "axios";
 import queryString from "query-string";
 
 const axiosClient = axios.create({
-  baseURL: "http://192.168.0.2:80/project/Asm-API/api/",
+  baseURL: "http://localhost/project/Asm-API/",
   headers: {
     "Content-Type": "application/json",
   },
@@ -11,7 +11,11 @@ const axiosClient = axios.create({
 
 axiosClient.interceptors.request.use(async (config) => {
   const accessToken = localStorage.getItem("access_token");
-  config.headers.Authorization = `Bearer ${accessToken}`;
+
+  if (accessToken) {
+    config.headers.Authorization = `Bearer ${accessToken}`;
+  }
+
   return config;
 });
 

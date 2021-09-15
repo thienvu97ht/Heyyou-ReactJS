@@ -70,6 +70,10 @@ export const useStyles = makeStyles((theme) => ({
   footerPayments: {
     textAlign: "center",
     marginBottom: "35px",
+
+    "& > img": {
+      maxWidth: "100%",
+    },
   },
 
   footerMenus: {

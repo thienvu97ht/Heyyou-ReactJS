@@ -11,6 +11,7 @@ import {
 } from "@material-ui/core";
 import { Search, ShoppingCart } from "@material-ui/icons";
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useStyles } from "./style";
 
@@ -30,8 +31,11 @@ const StyleMenus = withStyles(() => ({
 }))(Menu);
 
 function Header() {
-  const classes = useStyles();
+  const loggedInUser = useSelector((state) => state.user.current);
+  const isLoggedIn = !!loggedInUser.username;
+  console.log(isLoggedIn);
 
+  const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleCloseMenu = () => {
@@ -78,7 +82,11 @@ function Header() {
               <Link to="/abouts">GIỚI THIỆU</Link>
             </Box>
             <Box component="li">
-              <Link to="/auth">ĐĂNG NHẬP / ĐĂNG KÝ</Link>
+              {!isLoggedIn && <Link to="/auth">ĐĂNG NHẬP / ĐĂNG KÝ</Link>}
+
+              {isLoggedIn && (
+                <Link to="/account">{loggedInUser.fullname.toUpperCase()}</Link>
+              )}
             </Box>
             <Box component="li" style={{ marginLeft: "10px" }}>
               <IconButton color="inherit" onClick={handleSearchClick}>

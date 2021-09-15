@@ -1,11 +1,28 @@
+import { unwrapResult } from "@reduxjs/toolkit";
+import { login } from "app/userSlice";
+import { useSnackbar } from "notistack";
 import React from "react";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router";
 import LoginForm from "../LoginForm";
 
-Login.propTypes = {};
+function Login() {
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const { enqueueSnackbar } = useSnackbar();
 
-function Login(props) {
-  const handleSubmit = (values) => {
-    console.log(values);
+  const handleSubmit = async (values) => {
+    try {
+      const action = login(values);
+      const resultAction = await dispatch(action);
+      unwrapResult(resultAction);
+
+      // Về trang chủ
+      enqueueSnackbar("Đăng nhập thành công", { variant: "success" });
+      history.push("/");
+    } catch (error) {
+      enqueueSnackbar("Đăng nhập thất bại", { variant: "error" });
+    }
   };
 
   return (
