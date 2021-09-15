@@ -9,6 +9,10 @@ export const useStyles = makeStyles((theme) => ({
   notFoundBox: {
     textAlign: "center",
 
+    "& > img": {
+      maxWidth: "100%",
+    },
+
     "& > p": {
       color: "#484848",
       marginBottom: "15px",

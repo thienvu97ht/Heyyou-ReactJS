@@ -19,6 +19,13 @@ export const useStyle = makeStyles((theme) => ({
 
   submit: {
     margin: theme.spacing(3, 0, 2, 0),
+    color: "#000",
+    border: "1px solid #000",
+
+    "&:hover": {
+      color: "#fff",
+      backgroundColor: "#000",
+    },
   },
 
   progress: {

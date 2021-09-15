@@ -45,7 +45,7 @@ export const useStyles = makeStyles((theme) => ({
   formBox: {
     "& > form": {
       "& > input": {
-        width: "435px",
+        maxWidth: "435px",
         border: "none",
         borderBottom: "1px solid #e5e5e5",
         height: "48px",

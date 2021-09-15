@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core";
 export const useStyle = makeStyles((theme) => ({
   root: {
     position: "relative",
-    width: "410px",
+    maxWidth: "410px",
     margin: "0 auto",
   },
 
@@ -19,6 +19,13 @@ export const useStyle = makeStyles((theme) => ({
 
   submit: {
     margin: theme.spacing(3, 0, 2, 0),
+    color: "#000",
+    border: "1px solid #000",
+
+    "&:hover": {
+      color: "#fff",
+      backgroundColor: "#000",
+    },
   },
 
   progress: {
