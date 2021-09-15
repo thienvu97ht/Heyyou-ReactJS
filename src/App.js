@@ -1,3 +1,4 @@
+import AccountPage from "pages/Account";
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
 import Footer from "./components/Footer";
@@ -17,6 +18,7 @@ function App() {
         <Route path="/" component={HomePage} exact />
         <Route path="/abouts" component={AboutsPage} />
         <Route path="/auth" component={AuthPage} />
+        <Route path="/account" component={AccountPage} />
 
         <Route component={NotFound} />
       </Switch>

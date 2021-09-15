@@ -1,5 +1,8 @@
 import { Box, Container, Grid, Typography } from "@material-ui/core";
 import React, { useState } from "react";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useHistory } from "react-router";
 import ForgotPassword from "./components/ForgotPassword";
 import Login from "./components/Login";
 import Register from "./components/Register";
@@ -12,6 +15,13 @@ const MODE = {
 
 function AuthPage(props) {
   const classes = useStyles();
+  const history = useHistory();
+  const loggedInUser = useSelector((state) => state.user.current);
+  const isLoggedIn = !!loggedInUser.email;
+
+  useEffect(() => {
+    isLoggedIn && history.push("/account");
+  }, [isLoggedIn, history]);
 
   const [mode, setMode] = useState(MODE.LOGIN);
 
