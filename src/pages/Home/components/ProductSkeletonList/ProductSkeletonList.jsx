@@ -12,9 +12,9 @@ function ProductSkeletonList({ length = 12 }) {
     <Box>
       <Grid container spacing={2}>
         {Array.from(new Array(length)).map((x, index) => (
-          <Grid item key={index} xs={6} sm={6} md={3} lg={3}>
+          <Grid item key={index} xs={6} sm={6} md={4} lg={4}>
             <Box>
-              <Skeleton variant="rect" width="100%" height={270} />
+              <Skeleton variant="rect" width="100%" height="270px" />
               <Skeleton />
               <Skeleton width="50%" />
             </Box>
