@@ -12,7 +12,7 @@ RegisterForm.propTypes = {
   onSubmit: PropTypes.func,
 };
 
-function RegisterForm(props) {
+function RegisterForm({ onSubmit = null }) {
   const classes = useStyle();
 
   const schema = yup.object().shape({
@@ -55,9 +55,10 @@ function RegisterForm(props) {
   });
 
   const handleSubmit = async (values) => {
-    const { onSubmit } = props;
     if (onSubmit) {
-      await onSubmit(values);
+      try {
+        await onSubmit(values);
+      } catch (error) {}
     }
   };
 

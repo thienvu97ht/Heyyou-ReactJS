@@ -1,4 +1,5 @@
 import { Box, Container, Typography } from "@material-ui/core";
+import ProductsPage from "pages/Products";
 import React from "react";
 import { useStyles } from "./style";
 
@@ -11,6 +12,7 @@ function NewProductsFature({ className }) {
         <Box className={classes.titleBox}>
           <Typography>SẢN PHẨM MỚI!</Typography>
         </Box>
+        <ProductsPage />
       </Container>
     </Box>
   );

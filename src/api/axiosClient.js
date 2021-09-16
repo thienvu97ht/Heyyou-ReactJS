@@ -2,7 +2,7 @@ import axios from "axios";
 import queryString from "query-string";
 
 const axiosClient = axios.create({
-  baseURL: "http://localhost/project/Asm-API/",
+  baseURL: "http://localhost/project/Asm-API/api",
   headers: {
     "Content-Type": "application/json",
   },

@@ -16,7 +16,6 @@ function Register(props) {
     const resultAction = await dispatch(action);
     const resp = unwrapResult(resultAction);
 
-    console.log(resp);
     if (!resp) return;
 
     // do something here on register sucessfully
