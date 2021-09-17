@@ -7,6 +7,8 @@ export const useStyles = makeStyles((theme) => ({
   },
 
   img: {
+    minHeight: "279px",
+
     "& > img": {
       width: "100%",
     },

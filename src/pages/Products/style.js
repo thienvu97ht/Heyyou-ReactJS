@@ -5,4 +5,11 @@ export const useStyles = makeStyles((theme) => ({
     paddingTop: "120px",
     marginBottom: "50px",
   },
+
+  pagination: {
+    display: "flex",
+    flexFlow: "row nowrap",
+    justifyContent: "center",
+    marginTop: "20px",
+  },
 }));

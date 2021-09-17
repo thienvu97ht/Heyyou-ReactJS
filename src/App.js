@@ -1,4 +1,5 @@
 import AccountPage from "pages/Account";
+import ProductPage from "pages/Products";
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
 import Footer from "./components/Footer";
@@ -19,6 +20,7 @@ function App() {
         <Route path="/abouts" component={AboutsPage} />
         <Route path="/auth" component={AuthPage} />
         <Route path="/account" component={AccountPage} />
+        <Route path="/products" component={ProductPage} />
 
         <Route component={NotFound} />
       </Switch>
