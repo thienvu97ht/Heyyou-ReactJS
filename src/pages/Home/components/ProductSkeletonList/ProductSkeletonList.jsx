@@ -10,7 +10,7 @@ ProductSkeletonList.propTypes = {
 function ProductSkeletonList({ length = 12 }) {
   return (
     <Box>
-      <Grid container spacing={2}>
+      <Grid container spacing={4}>
         {Array.from(new Array(length)).map((x, index) => (
           <Grid item key={index} xs={6} sm={6} md={4} lg={4}>
             <Box>
