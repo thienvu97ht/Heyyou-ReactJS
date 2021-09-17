@@ -1,4 +1,5 @@
 import { Box, Container, Typography } from "@material-ui/core";
+import productApi from "api/productApi";
 import React, { useEffect, useState } from "react";
 import ProductList from "../ProductList";
 import ProductSkeletonList from "../ProductSkeletonList/ProductSkeletonList";
@@ -13,11 +14,13 @@ function BestSeller({ className }) {
     (async () => {
       try {
         //   Goi API
+        const data = await productApi.getProductBestSelling();
+        setProductList(data);
       } catch (error) {
         console.log("Failed to fetch product list: ", error);
       }
 
-      //   setLoading(false)
+      setLoading(false);
     })();
   }, []);
 

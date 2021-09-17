@@ -31,8 +31,8 @@ const productApi = {
     };
   },
 
-  getAllProducts2: () => {
-    const url = `products/getAllProducts2.php`;
+  getProductBestSelling: () => {
+    const url = `products/bestSelling.php`;
     return axiosClient.get(url);
   },
 

@@ -17,7 +17,9 @@ function Product({ product = {} }) {
         <img src={product.images} alt={product.nameProduct} />
       </Box>
       <Box className={classes.content}>
-        <Typography>{product.nameProduct}</Typography>
+        <Typography className={classes.nameProduct}>
+          {product.nameProduct}
+        </Typography>
         <Typography>{formatPrice(product.price)}</Typography>
       </Box>
     </Box>

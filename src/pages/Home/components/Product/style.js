@@ -16,4 +16,10 @@ export const useStyles = makeStyles((theme) => ({
     padding: "20px 15px 0px 15px",
     textAlign: "center",
   },
+
+  nameProduct: {
+    fontWeight: "bold",
+    fontSize: "15px",
+    marginBottom: "10px",
+  },
 }));
