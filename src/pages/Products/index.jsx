@@ -56,6 +56,8 @@ function ProductPage() {
             count={Math.ceil(pagination.total / pagination.limit)}
             page={pagination.page}
             onChange={handlePageChange}
+            variant="outlined"
+            shape="rounded"
           />
         </Box>
       </Container>
