@@ -62,8 +62,13 @@ export const useStyles = makeStyles((theme) => ({
     transitionDelay: "1s",
 
     "& > li": {
-      "& > p": {
+      "& > a": {
         width: "100px",
+        display: "inline-block",
+
+        fontSize: "17px",
+        textDecoration: "none",
+        color: "white",
       },
     },
 
@@ -82,7 +87,7 @@ export const useStyles = makeStyles((theme) => ({
       padding: 0,
 
       "& > li": {
-        "& > p": {
+        "& > a": {
           padding: "10px 15px",
           borderBottom: "solid 1px rgba(255, 255, 255, 0.3)",
           fontSize: "13px",

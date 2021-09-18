@@ -1,4 +1,5 @@
 import AccountPage from "pages/Account";
+import DetailPage from "pages/DetailPage";
 import ProductPage from "pages/Products";
 import { Route, Switch } from "react-router-dom";
 import "./App.css";
@@ -20,7 +21,8 @@ function App() {
         <Route path="/abouts" component={AboutsPage} />
         <Route path="/auth" component={AuthPage} />
         <Route path="/account" component={AccountPage} />
-        <Route path="/products" component={ProductPage} />
+        <Route path="/products" exact component={ProductPage} />
+        <Route path="/products/:productId" component={DetailPage} />
 
         <Route component={NotFound} />
       </Switch>

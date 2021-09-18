@@ -61,19 +61,19 @@ function Header() {
               <Link to="/products">SẢN PHẨM</Link>
               <Box component="ul" className={classes.menuProducts}>
                 <Box component="li">
-                  <Typography>TEE</Typography>
+                  <Link to="/tee">TEE</Link>
                 </Box>
                 <Box component="li">
-                  <Typography>JACKET</Typography>
+                  <Link to="/jacket">JACKET</Link>
                 </Box>
                 <Box component="li">
-                  <Typography>VARSITY</Typography>
+                  <Link to="/varsity">VARSITY</Link>
                 </Box>
                 <Box component="li">
-                  <Typography>HOODIE</Typography>
+                  <Link to="/hoodie">HOODIE</Link>
                 </Box>
                 <Box component="li">
-                  <Typography>PANTS</Typography>
+                  <Link to="/pants">PANTS</Link>
                 </Box>
               </Box>
             </Box>

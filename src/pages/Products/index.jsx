@@ -3,8 +3,8 @@ import { Pagination } from "@material-ui/lab";
 import productApi from "api/productApi";
 import React, { useEffect, useState } from "react";
 import ProductSort from "./components/Filters/ProductSort";
-import ProductList from "./components/ProductList";
 import ProductSkeletonList from "./components/ProductSkeletonList";
+import ProductList from "./components/ProductList";
 import { useStyles } from "./style";
 
 function ProductPage() {
@@ -32,7 +32,6 @@ function ProductPage() {
       } catch (error) {
         console.log("Failed to fetch product list: ", error);
       }
-
       setLoading(false);
     })();
   }, [filters]);
