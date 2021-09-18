@@ -6,6 +6,16 @@ export const useStyles = makeStyles((theme) => ({
     marginBottom: "50px",
   },
 
+  topBar: {
+    marginBottom: "40px",
+    paddingBottom: "10px",
+    borderBottom: "1px solid #ededed",
+
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+
   pagination: {
     display: "flex",
     flexFlow: "row nowrap",

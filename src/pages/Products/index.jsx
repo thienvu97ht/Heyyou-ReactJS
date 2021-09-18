@@ -2,6 +2,7 @@ import { Box, Container } from "@material-ui/core";
 import { Pagination } from "@material-ui/lab";
 import productApi from "api/productApi";
 import React, { useEffect, useState } from "react";
+import ProductSort from "./components/Filters/ProductSort";
 import ProductList from "./components/ProductList";
 import ProductSkeletonList from "./components/ProductSkeletonList";
 import { useStyles } from "./style";
@@ -18,6 +19,7 @@ function ProductPage() {
   const [filters, setFilters] = useState({
     _page: 1,
     _limit: 12,
+    _sort: "sold:DESC",
   });
 
   useEffect(() => {
@@ -42,9 +44,25 @@ function ProductPage() {
     }));
   };
 
+  const handleSortChange = (newSortValue) => {
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      _sort: newSortValue,
+    }));
+  };
+
   return (
     <Box className={classes.root}>
       <Container>
+        <Box className={classes.topBar}>
+          <Box className={classes.gridListOption}>Lọc</Box>
+          <Box className={classes.sortOption}>
+            <ProductSort
+              currentSort={filters._sort}
+              onChange={handleSortChange}
+            />
+          </Box>
+        </Box>
         {loading ? (
           <ProductSkeletonList length={12} />
         ) : (

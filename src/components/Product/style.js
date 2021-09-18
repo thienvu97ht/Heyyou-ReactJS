@@ -20,8 +20,13 @@ export const useStyles = makeStyles((theme) => ({
   },
 
   nameProduct: {
-    fontWeight: "bold",
+    fontWeight: "500",
     fontSize: "15px",
     marginBottom: "10px",
+  },
+
+  price: {
+    fontSize: "15px",
+    fontWeight: "400",
   },
 }));

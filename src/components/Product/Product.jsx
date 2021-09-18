@@ -20,7 +20,9 @@ function Product({ product = {} }) {
         <Typography className={classes.nameProduct}>
           {product.nameProduct}
         </Typography>
-        <Typography>{formatPrice(product.price)}</Typography>
+        <Typography className={classes.price}>
+          {formatPrice(product.price)}
+        </Typography>
       </Box>
     </Box>
   );
