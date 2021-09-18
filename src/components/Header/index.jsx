@@ -10,8 +10,10 @@ import {
 } from "@material-ui/core";
 import { Search, ShoppingCart } from "@material-ui/icons";
 import categoryApi from "api/categoryApi";
+import queryString from "query-string";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 import { useStyles } from "./style";
 
@@ -35,6 +37,7 @@ function Header() {
   const isLoggedIn = !!loggedInUser.email;
 
   const classes = useStyles();
+  const history = useHistory();
   const [anchorEl, setAnchorEl] = useState(null);
 
   const [categories, setCategories] = useState([]);
@@ -59,6 +62,19 @@ function Header() {
     setAnchorEl(e.currentTarget);
   };
 
+  const handleClick = (category) => {
+    const filters = {
+      category: category.name,
+    };
+
+    history.push({
+      pathname: history.location.pathname,
+      search: queryString.stringify(filters),
+    });
+
+    console.log(queryString.stringify(filters));
+  };
+
   return (
     <>
       <Box className={classes.root}>
@@ -76,7 +92,9 @@ function Header() {
               <Box component="ul" className={classes.menuProducts}>
                 {categories.map((category) => (
                   <Box component="li" key={category.id}>
-                    <Link to={`/collections/${category.name}`}>
+                    <Link
+                      to={`/collections/search`}
+                      onClick={() => handleClick(category)}>
                       {category.name.toUpperCase()}
                     </Link>
                   </Box>
