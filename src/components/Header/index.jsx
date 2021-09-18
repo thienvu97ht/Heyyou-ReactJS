@@ -92,9 +92,7 @@ function Header() {
               <Box component="ul" className={classes.menuProducts}>
                 {categories.map((category) => (
                   <Box component="li" key={category.id}>
-                    <Link
-                      to={`/collections/search`}
-                      onClick={() => handleClick(category)}>
+                    <Link to={`/collections/${category.name}`}>
                       {category.name.toUpperCase()}
                     </Link>
                   </Box>

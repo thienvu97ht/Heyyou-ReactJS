@@ -1,16 +1,18 @@
 import { Box, Container } from "@material-ui/core";
 import { Pagination } from "@material-ui/lab";
 import productApi from "api/productApi";
-import queryString from "query-string";
-import React, { useEffect, useMemo, useState } from "react";
-import { useHistory, useLocation } from "react-router";
+import React, { useEffect, useState } from "react";
+import { useHistory, useLocation, useRouteMatch } from "react-router";
 import ProductSort from "./components/Filters/ProductSort";
 import ProductList from "./components/ProductList";
 import ProductSkeletonList from "./components/ProductSkeletonList";
 import { useStyles } from "./style";
+import queryString from "query-string";
+import { useMemo } from "react";
 
 function ProductPage() {
   const classes = useStyles();
+  const match = useRouteMatch();
   const history = useHistory();
   const location = useLocation();
   const queryParams = useMemo(() => {
@@ -21,9 +23,9 @@ function ProductPage() {
       _page: Number.parseInt(params._page) || 1,
       _limit: Number.parseInt(params._limit) || 12,
       _sort: params._sort || "sold:DESC",
-      _category: params._category || "allitems",
+      _category: match.params.categories || "allitems",
     };
-  }, [location.search]);
+  }, [location.search, match]);
 
   const [productList, setProductList] = useState([]);
   const [pagination, setPagination] = useState({
