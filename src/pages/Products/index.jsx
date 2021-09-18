@@ -2,13 +2,20 @@ import { Box, Container } from "@material-ui/core";
 import { Pagination } from "@material-ui/lab";
 import productApi from "api/productApi";
 import React, { useEffect, useState } from "react";
+import { useHistory, useLocation } from "react-router";
 import ProductSort from "./components/Filters/ProductSort";
-import ProductSkeletonList from "./components/ProductSkeletonList";
 import ProductList from "./components/ProductList";
+import ProductSkeletonList from "./components/ProductSkeletonList";
 import { useStyles } from "./style";
+import queryString from "query-string";
 
 function ProductPage() {
   const classes = useStyles();
+  // const { params } = useRouteMatch();
+  const history = useHistory();
+  const location = useLocation();
+  const queryParams = queryString.parse(location.search);
+
   const [productList, setProductList] = useState([]);
   const [pagination, setPagination] = useState({
     limit: 12,
@@ -16,11 +23,22 @@ function ProductPage() {
     page: 1,
   });
   const [loading, setLoading] = useState(true);
-  const [filters, setFilters] = useState({
-    _page: 1,
-    _limit: 12,
-    _sort: "sold:DESC",
-  });
+
+  const [filters, setFilters] = useState(() => ({
+    ...queryParams,
+    _page: Number.parseInt(queryParams._page) || 1,
+    _limit: Number.parseInt(queryParams._limit) || 12,
+    _sort: queryParams._sort || "sold:DESC",
+    _category: queryParams._category || "allitems",
+  }));
+
+  useEffect(() => {
+    // TODO: Sync filter to URL
+    history.push({
+      pathname: history.location.pathname,
+      search: queryString.stringify(filters),
+    });
+  }, [filters, history]);
 
   useEffect(() => {
     (async () => {

@@ -21,7 +21,7 @@ function App() {
         <Route path="/abouts" component={AboutsPage} />
         <Route path="/auth" component={AuthPage} />
         <Route path="/account" component={AccountPage} />
-        <Route path="/products" exact component={ProductPage} />
+        <Route path="/collections/:categories" exact component={ProductPage} />
         <Route path="/products/:productId" component={DetailPage} />
 
         <Route component={NotFound} />

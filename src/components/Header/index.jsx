@@ -6,11 +6,11 @@ import {
   Menu,
   MenuItem,
   TextField,
-  Typography,
   withStyles,
 } from "@material-ui/core";
 import { Search, ShoppingCart } from "@material-ui/icons";
-import React, { useState } from "react";
+import categoryApi from "api/categoryApi";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useStyles } from "./style";
@@ -37,6 +37,20 @@ function Header() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
 
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        //   Goi API
+        const categories = await categoryApi.getAll();
+        setCategories(categories);
+      } catch (error) {
+        console.log("Failed to fetch category list: ", error);
+      }
+    })();
+  }, []);
+
   const handleCloseMenu = () => {
     setAnchorEl(null);
   };
@@ -58,23 +72,15 @@ function Header() {
               <Link to="/">TRANG CHỦ</Link>
             </Box>
             <Box component="li" className={classes.subMenu}>
-              <Link to="/products">SẢN PHẨM</Link>
+              <Link to="/collections/allitems">SẢN PHẨM</Link>
               <Box component="ul" className={classes.menuProducts}>
-                <Box component="li">
-                  <Link to="/tee">TEE</Link>
-                </Box>
-                <Box component="li">
-                  <Link to="/jacket">JACKET</Link>
-                </Box>
-                <Box component="li">
-                  <Link to="/varsity">VARSITY</Link>
-                </Box>
-                <Box component="li">
-                  <Link to="/hoodie">HOODIE</Link>
-                </Box>
-                <Box component="li">
-                  <Link to="/pants">PANTS</Link>
-                </Box>
+                {categories.map((category) => (
+                  <Box component="li" key={category.id}>
+                    <Link to={`/collections/${category.name}`}>
+                      {category.name.toUpperCase()}
+                    </Link>
+                  </Box>
+                ))}
               </Box>
             </Box>
             <Box component="li">
