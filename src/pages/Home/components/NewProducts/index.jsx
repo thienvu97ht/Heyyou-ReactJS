@@ -15,7 +15,11 @@ function NewProducts({ className }) {
     (async () => {
       try {
         //   Goi API
-        const { data } = await productApi.getAll({ _page: 1, _limit: 15 });
+        const { data } = await productApi.getAll({
+          _page: 1,
+          _limit: 15,
+          _sort: "created_at:DESC",
+        });
         setProductList(data);
       } catch (error) {
         console.log("Failed to fetch product list: ", error);

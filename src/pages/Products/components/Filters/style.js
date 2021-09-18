@@ -10,17 +10,17 @@ export const useStyles = makeStyles((theme) => ({
       fontSize: "14px",
       color: "#555",
     },
+
+    "& .MuiInputBase-root": {
+      "&.Mui-focused fieldset": {
+        borderColor: "#000",
+      },
+    },
   },
 
   select: {
-    "&:before": {
-      borderColor: "white",
-    },
-    "&:after": {
-      borderColor: "white",
-    },
-    "&:not(.Mui-disabled):hover::before": {
-      borderColor: "white",
+    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+      borderColor: "#000",
     },
   },
 }));

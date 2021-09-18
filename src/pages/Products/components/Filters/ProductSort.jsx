@@ -28,9 +28,21 @@ function ProductSort({ currentSort, onChange }) {
         <FormControl fullWidth size="small">
           <Select
             className={classes.select}
+            id="demo-simple-select"
             variant="outlined"
             value={currentSort}
-            onChange={handleSortChange}>
+            onChange={handleSortChange}
+            MenuProps={{
+              anchorOrigin: {
+                vertical: "bottom",
+                horizontal: "left",
+              },
+              transformOrigin: {
+                vertical: "top",
+                horizontal: "left",
+              },
+              getContentAnchorEl: null,
+            }}>
             <MenuItem value="sold:DESC">Bán chạy nhất</MenuItem>
             <MenuItem value="created_at:ASC">Cũ nhất</MenuItem>
             <MenuItem value="created_at:DESC">Mới nhất</MenuItem>

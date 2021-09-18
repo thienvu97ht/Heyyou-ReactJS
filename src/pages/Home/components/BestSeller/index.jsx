@@ -14,7 +14,11 @@ function BestSeller({ className }) {
     (async () => {
       try {
         //   Goi API
-        const data = await productApi.getProductBestSelling();
+        const { data } = await productApi.getAll({
+          _page: 1,
+          _limit: 3,
+          _sort: "sold:DESC",
+        });
         setProductList(data);
       } catch (error) {
         console.log("Failed to fetch product list: ", error);

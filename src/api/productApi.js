@@ -31,11 +31,6 @@ const productApi = {
     };
   },
 
-  getProductBestSelling: () => {
-    const url = `products/bestSelling.php`;
-    return axiosClient.get(url);
-  },
-
   //   get(id) {
   //     const url = `/products/${id}`;
   //     return axiosClient.get(url);
