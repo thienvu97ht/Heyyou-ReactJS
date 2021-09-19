@@ -62,19 +62,6 @@ function Header() {
     setAnchorEl(e.currentTarget);
   };
 
-  const handleClick = (category) => {
-    const filters = {
-      category: category.name,
-    };
-
-    history.push({
-      pathname: history.location.pathname,
-      search: queryString.stringify(filters),
-    });
-
-    console.log(queryString.stringify(filters));
-  };
-
   return (
     <>
       <Box className={classes.root}>

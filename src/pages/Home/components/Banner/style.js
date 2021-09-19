@@ -22,7 +22,7 @@ export const useStyles = makeStyles((theme) => ({
 
   img: {
     width: "100%",
-    transition: "all 4s",
+    transition: "all 2s",
 
     "&:hover": {
       transform: "scale(1.1)",

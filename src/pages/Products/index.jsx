@@ -1,14 +1,13 @@
 import { Box, Container } from "@material-ui/core";
 import { Pagination } from "@material-ui/lab";
 import productApi from "api/productApi";
-import React, { useEffect, useState } from "react";
+import queryString from "query-string";
+import React, { useEffect, useMemo, useState } from "react";
 import { useHistory, useLocation, useRouteMatch } from "react-router";
 import ProductSort from "./components/Filters/ProductSort";
 import ProductList from "./components/ProductList";
 import ProductSkeletonList from "./components/ProductSkeletonList";
 import { useStyles } from "./style";
-import queryString from "query-string";
-import { useMemo } from "react";
 
 function ProductPage() {
   const classes = useStyles();

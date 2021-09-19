@@ -31,10 +31,15 @@ const productApi = {
     };
   },
 
-  //   get(id) {
-  //     const url = `/products/${id}`;
-  //     return axiosClient.get(url);
-  //   },
+  getImages(id) {
+    const url = `/products/getImages.php`;
+    return axiosClient.post(url, id);
+  },
+
+  getProduct(id) {
+    const url = `/products/getProductById.php`;
+    return axiosClient.post(url, id);
+  },
 
   //   add(data) {
   //     const url = `/products`;
