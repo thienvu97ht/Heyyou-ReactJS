@@ -1,8 +1,9 @@
-import { Box, Container, Grid, LinearProgress, Paper } from "@material-ui/core";
+import { Box, Container, Grid, LinearProgress } from "@material-ui/core";
 import React from "react";
 import { Route, Switch, useRouteMatch } from "react-router";
 import ProductDescription from "./components/ProductDescriptom";
 import ProductReview from "./components/ProductReview";
+import ProductThumbnail from "./components/ProductThumbnail/index";
 import useProductDetail from "./hooks/useProductDetail";
 import { useStyles } from "./style";
 
@@ -29,11 +30,10 @@ function DetailPage() {
     <Box className={classes.root}>
       <Container>
         <Grid container spacing={4}>
-          <Grid item className={classes.left} xs={12} sm={12} md={6} lg={6}>
-            {/* <ProductThumbnail product={product} /> */}
-            126
+          <Grid item xs={12} sm={12} md={6} lg={6}>
+            <ProductThumbnail product={product} />
           </Grid>
-          <Grid item className={classes.right} xs={12} sm={12} md={6} lg={6}>
+          <Grid item xs={12} sm={12} md={6} lg={6}>
             {/* <ProductInfo product={product} />
           <AddToCartForm onSubmit={handleAddToCartSubmit} /> */}
             123

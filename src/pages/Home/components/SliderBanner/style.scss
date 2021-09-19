@@ -1,9 +1,30 @@
-.slick-dots {
+.slick-dots-1das6 {
   bottom: 20px;
   display: flex;
+  position: absolute;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-align: center;
 
-  li {
+  &.slick-thumb-312s {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  & > li {
     margin: 0px 7px;
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    cursor: pointer;
 
     button {
       display: block;
@@ -13,6 +34,8 @@
       border-radius: 100%;
       background-color: transparent;
       border: 1px solid white;
+      color: transparent;
+      cursor: pointer;
 
       &::before {
         opacity: 0;
@@ -22,6 +45,7 @@
 
     &.slick-active button {
       background-color: white;
+      color: transparent;
 
       &::before {
         color: white;

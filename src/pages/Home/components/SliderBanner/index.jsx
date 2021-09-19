@@ -22,13 +22,14 @@ function SliderBanner({ imgs = [], className }) {
     autoplay: false,
     speed: 2000,
     autoplaySpeed: 4000,
+    dotsClass: "slick-dots-1das6 slick-thumb-4t3d8",
   };
 
   return (
     <Slider {...settings} className={className}>
       {imgs.map((img, index) => (
         <Box key={index} className={classes.imgBox}>
-          <img src={img} alt="" className={classes.img} />
+          <img src={img} alt="" className={classes.img} width="100%" />
         </Box>
       ))}
     </Slider>
