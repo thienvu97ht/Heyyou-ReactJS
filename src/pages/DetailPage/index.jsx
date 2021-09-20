@@ -1,6 +1,7 @@
 import { Box, Container, Grid, LinearProgress } from "@material-ui/core";
 import React from "react";
 import { useRouteMatch } from "react-router";
+import AddToCartForm from "./components/AddToCartForm";
 import ProductInfo from "./components/ProductInfo";
 import ProductThumbnail from "./components/ProductThumbnail";
 import useProductDetail from "./hooks/useProductDetail";
@@ -25,7 +26,15 @@ function DetailPage() {
     );
   }
 
-  console.log(product);
+  const handleAddToCartSubmit = ({ quantity }) => {
+    // console.log('Form submit:', formValues);
+    // const action = addToCart({
+    //   id: product.id,
+    //   product,
+    //   quantity,
+    // });
+    // dispatch(action);
+  };
 
   return (
     <Box className={classes.root}>
@@ -36,7 +45,7 @@ function DetailPage() {
           </Grid>
           <Grid item xs={12} sm={12} md={6} lg={6}>
             <ProductInfo product={product} />
-            {/* <AddToCartForm onSubmit={handleAddToCartSubmit} /> */}
+            <AddToCartForm onSubmit={handleAddToCartSubmit} />
           </Grid>
         </Grid>
 

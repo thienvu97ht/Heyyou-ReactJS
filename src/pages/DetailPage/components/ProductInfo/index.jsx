@@ -11,8 +11,7 @@ ProductInfo.propTypes = {
 function ProductInfo({ product = {} }) {
   const classes = useStyles();
   const isSale = !!product.salePrice;
-
-  console.log(isSale);
+  const isStocking = Number.parseInt(product.quantity) > 0;
 
   return (
     <Box className={classes.root}>
@@ -34,8 +33,15 @@ function ProductInfo({ product = {} }) {
           </Typography>
         </Box>
       )}
-      <Typography className={classes.cate}></Typography>
-      <Typography className={classes.shortDesc}></Typography>
+      {isStocking ? (
+        <Typography className={classes.cate}>Trạng thái: Còn hàng</Typography>
+      ) : (
+        <Typography className={classes.cate}>Trạng thái: Hết hàng</Typography>
+      )}
+
+      <Typography className={classes.shortDesc}>
+        Chưa có mô tả cho sản phẩm này
+      </Typography>
     </Box>
   );
 }

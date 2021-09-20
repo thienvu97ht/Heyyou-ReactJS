@@ -21,6 +21,7 @@ export const useStyles = makeStyles((theme) => ({
   priceBox: {
     display: "flex",
     alignItems: "flex-end",
+    marginBottom: "15px",
   },
 
   salePrice: {
@@ -36,5 +37,18 @@ export const useStyles = makeStyles((theme) => ({
     lineHeight: 1,
     fontWeight: 300,
     textDecoration: "line-through",
+  },
+
+  cate: {
+    fontSize: "14px",
+    color: "#1c1c1c",
+    marginBottom: "15px",
+  },
+
+  shortDesc: {
+    fontSize: "14px",
+    color: "#666",
+    marginBottom: "30px",
+    marginTop: "10px",
   },
 }));
