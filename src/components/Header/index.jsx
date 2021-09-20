@@ -10,10 +10,8 @@ import {
 } from "@material-ui/core";
 import { Search, ShoppingCart } from "@material-ui/icons";
 import categoryApi from "api/categoryApi";
-import queryString from "query-string";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 import { useStyles } from "./style";
 
@@ -37,7 +35,6 @@ function Header() {
   const isLoggedIn = !!loggedInUser.email;
 
   const classes = useStyles();
-  const history = useHistory();
   const [anchorEl, setAnchorEl] = useState(null);
 
   const [categories, setCategories] = useState([]);

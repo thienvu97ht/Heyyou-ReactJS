@@ -1,3 +1,4 @@
+import { Box } from "@material-ui/core";
 import PropTypes from "prop-types";
 import React from "react";
 import Slider from "react-slick";
@@ -29,13 +30,15 @@ function ProductThumbnail({ product }) {
   };
 
   return (
-    <Slider {...settings}>
-      {images.map((img) => (
-        <div key={img.id}>
-          <img src={img.url} alt={img.id_product} width="100%" />
-        </div>
-      ))}
-    </Slider>
+    <Box pb={8}>
+      <Slider {...settings}>
+        {images.map((img) => (
+          <div key={img.id}>
+            <img src={img.url} alt={img.id_product} width="100%" />
+          </div>
+        ))}
+      </Slider>
+    </Box>
   );
 }
 
