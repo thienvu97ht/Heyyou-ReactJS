@@ -1,9 +1,10 @@
 import { Box, Container, Grid } from "@material-ui/core";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import React from "react";
+import React, { useState } from "react";
 import { useRouteMatch } from "react-router";
 import AddToCartForm from "./components/AddToCartForm";
 import ProductInfo from "./components/ProductInfo";
+import ProductMenu from "./components/ProductMenu";
 import ProductShare from "./components/ProductShare";
 import ProductThumbnail from "./components/ProductThumbnail";
 import useProductDetail from "./hooks/useProductDetail";
@@ -15,8 +16,9 @@ function DetailPage() {
   const classes = useStyles();
   const {
     params: { productId },
-    url,
   } = useRouteMatch();
+
+  const [currentTab, setCurrentTab] = useState(0);
 
   const { product, loading } = useProductDetail(productId);
 
@@ -38,6 +40,10 @@ function DetailPage() {
     // dispatch(action);
   };
 
+  const handleTabsChange = (newValue) => {
+    setCurrentTab(newValue);
+  };
+
   return (
     <Box className={classes.root}>
       <Container>
@@ -52,15 +58,11 @@ function DetailPage() {
           </Grid>
         </Grid>
 
-        {/* <ProductMenu /> */}
-
-        {/* <Switch>
-          <Route exact path={url}>
-            <ProductDescription product={product} />
-          </Route>
-
-          <Route exact path={`${url}/review`} component={ProductReview} />
-        </Switch> */}
+        <ProductMenu
+          product={product}
+          value={currentTab}
+          onChange={handleTabsChange}
+        />
       </Container>
     </Box>
   );
