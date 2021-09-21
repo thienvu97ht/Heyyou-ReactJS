@@ -40,13 +40,13 @@ export const useStyles = makeStyles((theme) => ({
   },
 
   cate: {
-    fontSize: "14px",
+    fontSize: "16px",
     color: "#1c1c1c",
     marginBottom: "15px",
   },
 
   shortDesc: {
-    fontSize: "14px",
+    fontSize: "16px",
     color: "#666",
     marginBottom: "30px",
     marginTop: "10px",

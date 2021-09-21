@@ -30,7 +30,7 @@ function ProductThumbnail({ product }) {
   };
 
   return (
-    <Box pb={8}>
+    <Box pb={8} maxHeight="590px">
       <Slider {...settings}>
         {images.map((img) => (
           <div key={img.id}>

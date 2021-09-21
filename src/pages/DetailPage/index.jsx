@@ -1,8 +1,10 @@
-import { Box, Container, Grid, LinearProgress } from "@material-ui/core";
+import { Box, Container, Grid } from "@material-ui/core";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import React from "react";
 import { useRouteMatch } from "react-router";
 import AddToCartForm from "./components/AddToCartForm";
 import ProductInfo from "./components/ProductInfo";
+import ProductShare from "./components/ProductShare";
 import ProductThumbnail from "./components/ProductThumbnail";
 import useProductDetail from "./hooks/useProductDetail";
 import { useStyles } from "./style";
@@ -21,7 +23,7 @@ function DetailPage() {
   if (loading) {
     return (
       <Box className={classes.loading}>
-        <LinearProgress />
+        <CircularProgress />
       </Box>
     );
   }
@@ -46,6 +48,7 @@ function DetailPage() {
           <Grid item xs={12} sm={12} md={6} lg={6}>
             <ProductInfo product={product} />
             <AddToCartForm onSubmit={handleAddToCartSubmit} />
+            <ProductShare product={product} />
           </Grid>
         </Grid>
 

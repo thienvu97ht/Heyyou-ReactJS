@@ -5,4 +5,12 @@ export const useStyles = makeStyles((theme) => ({
     paddingTop: "140px",
     marginBottom: "50px",
   },
+
+  loading: {
+    marginTop: "80px",
+    height: "500px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
 }));
