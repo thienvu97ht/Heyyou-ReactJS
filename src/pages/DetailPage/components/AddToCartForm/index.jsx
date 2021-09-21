@@ -1,13 +1,59 @@
-import { Box } from "@material-ui/core";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { Box, Button } from "@material-ui/core";
+import QuantityField from "components/form-controls/QuantityField";
+import PropTypes from "prop-types";
 import React from "react";
+import { useForm } from "react-hook-form";
+import * as yup from "yup";
 import { useStyles } from "./style";
 
-AddToCartForm.propTypes = {};
+AddToCartForm.propTypes = {
+  onSubmit: PropTypes.func,
+};
 
-function AddToCartForm() {
+function AddToCartForm({ onSubmit = null }) {
   const classes = useStyles();
 
-  return <Box className={classes.root}></Box>;
+  const schema = yup.object().shape({
+    quantity: yup
+      .number()
+      .required("Vui lòng nhập số lượng")
+      .min(1, "Giá trị nhỏ nhất là 1")
+      .typeError("Vui lòng nhập số"),
+  });
+
+  const form = useForm({
+    defaultValues: {
+      quantity: 1,
+    },
+    reValidateMode: "onSubmit",
+    resolver: yupResolver(schema),
+  });
+
+  const handleSubmit = async (values) => {
+    if (onSubmit) {
+      await onSubmit(values);
+    }
+  };
+
+  return (
+    <Box className={classes.root}>
+      <form onSubmit={form.handleSubmit(handleSubmit)}>
+        <QuantityField name="quantity" label="" form={form} />
+
+        <Button
+          className={classes.addBtn}
+          type="submit"
+          variant="contained"
+          color="primary"
+          fullWidth
+          size="large"
+          style={{ width: "250px" }}>
+          Thêm vào giỏ
+        </Button>
+      </form>
+    </Box>
+  );
 }
 
 export default AddToCartForm;

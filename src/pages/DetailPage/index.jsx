@@ -27,7 +27,7 @@ function DetailPage() {
   }
 
   const handleAddToCartSubmit = ({ quantity }) => {
-    // console.log('Form submit:', formValues);
+    console.log("Form submit:", quantity);
     // const action = addToCart({
     //   id: product.id,
     //   product,
