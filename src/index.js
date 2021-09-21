@@ -1,10 +1,10 @@
 import store from "app/store";
-import { SnackbarProvider } from "notistack";
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
 import ScrollToTop from "utils/ScrollToTop";
+import SnackbarProvider from "utils/SnackProvider";
 import App from "./App";
 import "./fonts/SVN-Veneer.ttf";
 import "./index.css";
@@ -14,11 +14,7 @@ ReactDOM.render(
     <Provider store={store}>
       <Router>
         <ScrollToTop>
-          <SnackbarProvider
-            anchorOrigin={{
-              vertical: "top",
-              horizontal: "right",
-            }}>
+          <SnackbarProvider>
             <App />
           </SnackbarProvider>
         </ScrollToTop>

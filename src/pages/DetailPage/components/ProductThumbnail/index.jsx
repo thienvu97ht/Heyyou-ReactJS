@@ -1,4 +1,4 @@
-import { Box } from "@material-ui/core";
+import { Box, makeStyles } from "@material-ui/core";
 import PropTypes from "prop-types";
 import React from "react";
 import Slider from "react-slick";
@@ -10,7 +10,17 @@ ProductThumbnail.propTypes = {
   product: PropTypes.object,
 };
 
+export const useStyles = makeStyles((theme) => ({
+  root: {
+    "& .slick-slide": {
+      maxHeight: "590px",
+    },
+  },
+}));
+
 function ProductThumbnail({ product }) {
+  const classes = useStyles();
+
   const images = product.images;
 
   const settings = {
@@ -30,7 +40,7 @@ function ProductThumbnail({ product }) {
   };
 
   return (
-    <Box pb={8} maxHeight="590px">
+    <Box pb={8} className={classes.root}>
       <Slider {...settings}>
         {images.map((img) => (
           <div key={img.id}>

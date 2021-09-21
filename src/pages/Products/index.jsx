@@ -97,6 +97,7 @@ function ProductPage() {
             onChange={handlePageChange}
             variant="outlined"
             shape="rounded"
+            size="large"
           />
         </Box>
       </Container>

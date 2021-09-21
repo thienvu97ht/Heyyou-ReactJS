@@ -1,5 +1,6 @@
 import { Container, Grid } from "@material-ui/core";
 import { logout } from "app/userSlice";
+import { useSnackbar } from "notistack";
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,6 +13,7 @@ function AccountPage(props) {
   const classes = useStyles();
   const dispatch = useDispatch();
   const history = useHistory();
+  const { enqueueSnackbar } = useSnackbar();
   const loggedInUser = useSelector((state) => state.user.current);
   const isLoggedIn = !!loggedInUser.email;
 
@@ -23,6 +25,10 @@ function AccountPage(props) {
     const action = logout();
     dispatch(action);
 
+    enqueueSnackbar("Đăng xuất thành công", {
+      variant: "success",
+      autoHideDuration: 2000,
+    });
     history.push("/");
   };
 
