@@ -7,12 +7,12 @@ ProductList.propTypes = {
   data: PropTypes.array,
 };
 
-function ProductList({ data = [] }) {
+function ProductList({ data = [], xs, sm, md, lg }) {
   return (
     <Box>
       <Grid container spacing={4}>
         {data.map((product) => (
-          <Grid item key={product.id} xs={6} sm={6} md={4} lg={4}>
+          <Grid item key={product.id} xs={xs} sm={sm} md={md} lg={lg}>
             <Product product={product} />
           </Grid>
         ))}

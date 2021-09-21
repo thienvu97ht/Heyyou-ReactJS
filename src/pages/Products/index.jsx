@@ -1,11 +1,11 @@
 import { Box, Container } from "@material-ui/core";
 import { Pagination } from "@material-ui/lab";
 import productApi from "api/productApi";
+import ProductList from "components/ProductList";
 import queryString from "query-string";
 import React, { useEffect, useMemo, useState } from "react";
 import { useHistory, useLocation, useRouteMatch } from "react-router";
 import ProductSort from "./components/Filters/ProductSort";
-import ProductList from "./components/ProductList";
 import ProductSkeletonList from "./components/ProductSkeletonList";
 import { useStyles } from "./style";
 
@@ -87,7 +87,7 @@ function ProductPage() {
         {loading ? (
           <ProductSkeletonList length={12} />
         ) : (
-          <ProductList data={productList} />
+          <ProductList data={productList} xs={6} sm={6} md={3} lg={3} />
         )}
         <Box className={classes.pagination}>
           <Pagination

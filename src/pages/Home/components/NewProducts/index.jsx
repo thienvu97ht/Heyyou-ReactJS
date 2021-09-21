@@ -1,10 +1,10 @@
 import { Box, Container, Typography } from "@material-ui/core";
 import React, { useState } from "react";
 import { useEffect } from "react";
-import ProductList from "../ProductList";
 import ProductSkeletonList from "../ProductSkeletonList/ProductSkeletonList";
 import { useStyles } from "./style";
 import productApi from "../../../../api/productApi";
+import ProductList from "components/ProductList";
 
 function NewProducts({ className }) {
   const classes = useStyles();
@@ -39,7 +39,7 @@ function NewProducts({ className }) {
         {loading ? (
           <ProductSkeletonList length={15} />
         ) : (
-          <ProductList data={productList} />
+          <ProductList data={productList} xs={6} sm={6} md={4} lg={4} />
         )}
       </Container>
     </Box>

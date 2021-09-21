@@ -1,11 +1,11 @@
-import { Box, Container, Typography } from "@material-ui/core";
+import { Box, Typography } from "@material-ui/core";
 import productApi from "api/productApi";
 import ProductList from "components/ProductList";
+import ProductSkeletonList from "pages/Products/components/ProductSkeletonList";
 import React, { useEffect, useState } from "react";
-import ProductSkeletonList from "../ProductSkeletonList/ProductSkeletonList";
 import { useStyles } from "./style";
 
-function BestSeller({ className }) {
+function ProductsRelated({ category }) {
   const classes = useStyles();
   const [productList, setProductList] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -16,9 +16,9 @@ function BestSeller({ className }) {
         //   Goi API
         const { data } = await productApi.getAll({
           _page: 1,
-          _limit: 3,
+          _limit: 4,
           _sort: "sold:DESC",
-          _category: "allitems",
+          _category: category,
         });
         setProductList(data);
       } catch (error) {
@@ -30,19 +30,17 @@ function BestSeller({ className }) {
   }, []);
 
   return (
-    <Box className={className}>
-      <Container className={classes.root}>
-        <Box className={classes.titleBox}>
-          <Typography>NHỮNG SẢN PHẨM BÁN CHẠY NHẤT</Typography>
-        </Box>
-        {loading ? (
-          <ProductSkeletonList length={3} />
-        ) : (
-          <ProductList data={productList} xs={6} sm={6} md={4} lg={4} />
-        )}
-      </Container>
+    <Box className={classes.root}>
+      <Box className={classes.titleBox}>
+        <Typography>SẢN PHẨM LIÊN QUAN</Typography>
+      </Box>
+      {loading ? (
+        <ProductSkeletonList length={4} />
+      ) : (
+        <ProductList data={productList} xs={6} sm={6} md={3} lg={3} />
+      )}
     </Box>
   );
 }
 
-export default BestSeller;
+export default ProductsRelated;

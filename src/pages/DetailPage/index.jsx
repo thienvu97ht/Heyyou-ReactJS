@@ -6,6 +6,7 @@ import AddToCartForm from "./components/AddToCartForm";
 import ProductInfo from "./components/ProductInfo";
 import ProductMenu from "./components/ProductMenu";
 import ProductShare from "./components/ProductShare";
+import ProductsRelated from "./components/ProductsRelated";
 import ProductThumbnail from "./components/ProductThumbnail";
 import useProductDetail from "./hooks/useProductDetail";
 import { useStyles } from "./style";
@@ -63,6 +64,8 @@ function DetailPage() {
           value={currentTab}
           onChange={handleTabsChange}
         />
+
+        <ProductsRelated category={product.nameCategory} />
       </Container>
     </Box>
   );
