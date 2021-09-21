@@ -98,12 +98,12 @@ function Header() {
                 <Search />
               </IconButton>
             </Box>
-            <Box component="li" style={{ marginLeft: 0 }}>
-              <IconButton color="inherit">
+            <Box component="li" style={{ margin: "0 10px 0 10px" }}>
+              <Link to="/cart" color="inherit">
                 <StyledBadge badgeContent={4} color="secondary">
                   <ShoppingCart />
                 </StyledBadge>
-              </IconButton>
+              </Link>
             </Box>
           </Box>
         </Container>
