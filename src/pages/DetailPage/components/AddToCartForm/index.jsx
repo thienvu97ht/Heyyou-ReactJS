@@ -11,7 +11,7 @@ AddToCartForm.propTypes = {
   onSubmit: PropTypes.func,
 };
 
-function AddToCartForm({ onSubmit = null }) {
+function AddToCartForm({ onSubmit = null, quantity }) {
   const classes = useStyles();
 
   const schema = yup.object().shape({
@@ -42,6 +42,7 @@ function AddToCartForm({ onSubmit = null }) {
         <QuantityField name="quantity" label="" form={form} />
 
         <Button
+          disabled={quantity <= 0}
           className={classes.addBtn}
           type="submit"
           variant="contained"
@@ -49,7 +50,7 @@ function AddToCartForm({ onSubmit = null }) {
           fullWidth
           size="large"
           style={{ width: "250px" }}>
-          Thêm vào giỏ
+          {quantity > 0 ? "Thêm vào giỏ" : "Hết hàng"}
         </Button>
       </form>
     </Box>

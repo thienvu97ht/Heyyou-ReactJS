@@ -39,9 +39,13 @@ function ProductInfo({ product = {} }) {
         <Typography className={classes.cate}>Trạng thái: Hết hàng</Typography>
       )}
 
-      <Typography className={classes.shortDesc}>
-        Chưa có mô tả cho sản phẩm này
-      </Typography>
+      {product.content ? (
+        <Typography className={classes.shortDesc}>{product.content}</Typography>
+      ) : (
+        <Typography className={classes.shortDesc}>
+          Chưa có mô tả cho sản phẩm này
+        </Typography>
+      )}
     </Box>
   );
 }

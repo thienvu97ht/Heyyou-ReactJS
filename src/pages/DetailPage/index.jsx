@@ -66,7 +66,10 @@ function DetailPage() {
           </Grid>
           <Grid item xs={12} sm={12} md={6} lg={6}>
             <ProductInfo product={product} />
-            <AddToCartForm onSubmit={handleAddToCartSubmit} />
+            <AddToCartForm
+              quantity={Number.parseInt(product.quantity)}
+              onSubmit={handleAddToCartSubmit}
+            />
             <ProductShare product={product} />
           </Grid>
         </Grid>
