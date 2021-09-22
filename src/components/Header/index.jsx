@@ -10,6 +10,10 @@ import {
 } from "@material-ui/core";
 import { Search, ShoppingCart } from "@material-ui/icons";
 import categoryApi from "api/categoryApi";
+import {
+  cartItemsCountSelector,
+  cartTotalSelector,
+} from "pages/Cart/selectors";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -33,6 +37,11 @@ const StyleMenus = withStyles(() => ({
 function Header() {
   const loggedInUser = useSelector((state) => state.user.current);
   const isLoggedIn = !!loggedInUser.email;
+
+  const cartItemsCount = useSelector(cartItemsCountSelector);
+
+  const cartTotal = useSelector(cartTotalSelector);
+  console.log(cartTotal);
 
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
@@ -100,7 +109,7 @@ function Header() {
             </Box>
             <Box component="li" style={{ margin: "0 10px 0 10px" }}>
               <Link to="/cart" color="inherit">
-                <StyledBadge badgeContent={4} color="secondary">
+                <StyledBadge badgeContent={cartItemsCount} color="secondary">
                   <ShoppingCart />
                 </StyledBadge>
               </Link>

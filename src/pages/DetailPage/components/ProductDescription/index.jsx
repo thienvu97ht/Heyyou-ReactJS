@@ -10,8 +10,6 @@ ProductDescription.propTypes = {
 function ProductDescription({ product = {} }) {
   const safeDescription = DOMPurify.sanitize(product.description);
 
-  console.log(product);
-
   return (
     <Paper elevation={0} style={{ padding: "15px" }}>
       {product.content ? (

@@ -1,8 +1,8 @@
 import { Container, Grid } from "@material-ui/core";
+import { clearCart } from "app/cartSlice";
 import { logout } from "app/userSlice";
 import { useSnackbar } from "notistack";
-import React from "react";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { useStyles } from "./style";
@@ -24,6 +24,7 @@ function AccountPage(props) {
   const handleLogout = () => {
     const action = logout();
     dispatch(action);
+    dispatch(clearCart());
 
     enqueueSnackbar("Đăng xuất thành công", {
       variant: "success",

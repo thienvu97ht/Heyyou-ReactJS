@@ -26,11 +26,22 @@ const cartSlice = createSlice({
     hideMiniCart(state) {
       state.showMiniCart(false);
     },
+
+    clearCart(state, action) {
+      // clear local storage
+      localStorage.removeItem(StorageKeys.CART);
+
+      state.cartItems = [];
+    },
   },
 
-  extraReducers: {},
+  extraReducers: {
+    [getProductsInCart.fulfilled]: (state, action) => {
+      state.cartItems = action.payload;
+    },
+  },
 });
 
 const { actions, reducer } = cartSlice;
-export const { showMiniCart, hideMiniCart } = actions;
+export const { showMiniCart, hideMiniCart, clearCart } = actions;
 export default reducer;

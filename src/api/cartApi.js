@@ -6,15 +6,15 @@ const cartApi = {
     const data = await axiosClient.post(url);
 
     const productInCart = data.map((item) => ({
-      id: item.id,
+      id: Number.parseInt(item.id),
       product: {
-        id: item.id,
+        id: Number.parseInt(item.id),
         nameProduct: item.nameProduct,
-        salePrice: item.salePrice,
-        originPrice: item.originPrice,
+        salePrice: Number.parseInt(item.salePrice),
+        originPrice: Number.parseInt(item.originPrice),
         thumbnail: item.thumbnail,
       },
-      quantity: item.quantity,
+      quantity: Number.parseInt(item.quantity),
     }));
 
     return productInCart;
