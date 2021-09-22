@@ -1,5 +1,4 @@
 import { unwrapResult } from "@reduxjs/toolkit";
-import { getProductsInCart } from "app/cartSlice";
 import { login } from "app/userSlice";
 import { useSnackbar } from "notistack";
 import React from "react";
@@ -17,9 +16,6 @@ function Login() {
       const action = login(values);
       const resultAction = await dispatch(action);
       unwrapResult(resultAction);
-
-      // Fetch products in cart
-      await dispatch(getProductsInCart());
 
       // Về trang chủ
       enqueueSnackbar("Đăng nhập thành công", {

@@ -1,7 +1,9 @@
 import { Box, Container, Grid } from "@material-ui/core";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import { addToCart } from "app/cartSlice";
 import React, { useState } from "react";
-import { useRouteMatch } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory, useRouteMatch } from "react-router";
 import AddToCartForm from "./components/AddToCartForm";
 import ProductInfo from "./components/ProductInfo";
 import ProductMenu from "./components/ProductMenu";
@@ -15,6 +17,11 @@ DetailPage.propTypes = {};
 
 function DetailPage() {
   const classes = useStyles();
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const loggedInUser = useSelector((state) => state.user.current);
+  const isLoggedIn = !!loggedInUser.email;
+
   const {
     params: { productId },
   } = useRouteMatch();
@@ -32,13 +39,18 @@ function DetailPage() {
   }
 
   const handleAddToCartSubmit = ({ quantity }) => {
-    console.log("Form submit:", quantity);
-    // const action = addToCart({
-    //   id: product.id,
-    //   product,
-    //   quantity,
-    // });
-    // dispatch(action);
+    // Kiểm tra đăng nhập
+    if (!isLoggedIn) {
+      alert("Vui lòng đăng nhập để tiếp tục mua hàng!");
+      history.push("/auth");
+      return;
+    }
+
+    const action = addToCart({
+      id: Number.parseInt(product.id),
+      quantity,
+    });
+    dispatch(action);
   };
 
   const handleTabsChange = (newValue) => {

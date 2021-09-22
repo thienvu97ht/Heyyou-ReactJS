@@ -12,6 +12,39 @@ export const getProductsInCart = createAsyncThunk(
   }
 );
 
+export const addToCart = createAsyncThunk(
+  "cart/addToCart",
+  async (payload, thunkAPI) => {
+    const { cartItems } = thunkAPI.getState().cart;
+
+    const index = cartItems.findIndex((x) => x.id === payload.id);
+
+    console.log("payload: ", payload);
+    console.log("cartItems: ", cartItems);
+
+    if (index >= 0) {
+      // San pham da co trong gio hang
+      console.log("Update số lượng");
+      const newItem = {
+        ...payload,
+        quantity: payload.quantity + cartItems[index].quantity,
+      };
+
+      console.log("newItem: ", newItem);
+
+      const data = await cartApi.updateCart(newItem);
+      localStorage.setItem(StorageKeys.CART, JSON.stringify(data));
+      return data;
+    } else {
+      // San pham chua co trong gio hang
+      console.log("Thêm mới");
+      const data = await cartApi.addToCart(payload);
+      localStorage.setItem(StorageKeys.CART, JSON.stringify(data));
+      return data;
+    }
+  }
+);
+
 const cartSlice = createSlice({
   name: "cart",
   initialState: {
@@ -37,6 +70,10 @@ const cartSlice = createSlice({
 
   extraReducers: {
     [getProductsInCart.fulfilled]: (state, action) => {
+      state.cartItems = action.payload;
+    },
+
+    [addToCart.fulfilled]: (state, action) => {
       state.cartItems = action.payload;
     },
   },

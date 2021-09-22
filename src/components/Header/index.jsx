@@ -10,12 +10,10 @@ import {
 } from "@material-ui/core";
 import { Search, ShoppingCart } from "@material-ui/icons";
 import categoryApi from "api/categoryApi";
-import {
-  cartItemsCountSelector,
-  cartTotalSelector,
-} from "pages/Cart/selectors";
+import { getProductsInCart } from "app/cartSlice";
+import { cartItemsCountSelector } from "pages/Cart/selectors";
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useStyles } from "./style";
 
@@ -39,9 +37,10 @@ function Header() {
   const isLoggedIn = !!loggedInUser.email;
 
   const cartItemsCount = useSelector(cartItemsCountSelector);
+  const dispatch = useDispatch();
 
-  const cartTotal = useSelector(cartTotalSelector);
-  console.log(cartTotal);
+  // const cartTotal = useSelector(cartTotalSelector);
+  // console.log(cartTotal);
 
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
@@ -58,7 +57,12 @@ function Header() {
         console.log("Failed to fetch category list: ", error);
       }
     })();
-  }, []);
+
+    if (isLoggedIn) {
+      const action = getProductsInCart();
+      dispatch(action);
+    }
+  }, [isLoggedIn, dispatch]);
 
   const handleCloseMenu = () => {
     setAnchorEl(null);
