@@ -27,7 +27,7 @@ function ProductsRelated({ category }) {
 
       setLoading(false);
     })();
-  }, []);
+  }, [category]);
 
   return (
     <Box className={classes.root}>

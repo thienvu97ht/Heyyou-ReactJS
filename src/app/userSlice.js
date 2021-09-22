@@ -28,6 +28,7 @@ const userSlice = createSlice({
       // clear local storage
       localStorage.removeItem(StorageKeys.USER);
       localStorage.removeItem(StorageKeys.TOKEN);
+      localStorage.removeItem(StorageKeys.CART);
 
       state.current = {};
     },

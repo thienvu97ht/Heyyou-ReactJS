@@ -1,10 +1,22 @@
-const { createSlice } = require("@reduxjs/toolkit");
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import cartApi from "api/cartApi";
+import StorageKeys from "constants/storage-keys";
+
+export const getProductsInCart = createAsyncThunk(
+  "cart/getProductsInCart",
+  async (payload) => {
+    const data = await cartApi.getProductsInCart(payload);
+
+    localStorage.setItem(StorageKeys.CART, JSON.stringify(data));
+    return data;
+  }
+);
 
 const cartSlice = createSlice({
   name: "cart",
   initialState: {
     showMiniCart: false,
-    cartItems: [],
+    cartItems: JSON.parse(localStorage.getItem(StorageKeys.CART)) || [],
   },
   reducers: {
     showMiniCart(state) {
@@ -15,6 +27,8 @@ const cartSlice = createSlice({
       state.showMiniCart(false);
     },
   },
+
+  extraReducers: {},
 });
 
 const { actions, reducer } = cartSlice;
