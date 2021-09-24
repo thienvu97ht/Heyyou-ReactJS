@@ -1,6 +1,7 @@
-import { Container, Grid, Typography } from "@material-ui/core";
+import { Box, Container, Grid, Typography, Button } from "@material-ui/core";
 import React from "react";
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router";
 import CartList from "./components/CartList";
 import CartTotal from "./components/CartTotal";
 import { cartTotalSelector } from "./selectors";
@@ -8,9 +9,14 @@ import { useStyles } from "./style";
 
 function CartPage() {
   const classes = useStyles();
+  const history = useHistory();
 
   const cartItems = useSelector((state) => state.cart.cartItems);
   const cartTotal = useSelector(cartTotalSelector);
+
+  const handleRedirect = () => {
+    history.push("/collections/allitems");
+  };
 
   return (
     <Container className={classes.root}>
@@ -23,6 +29,9 @@ function CartPage() {
           <CartTotal total={cartTotal} />
         </Grid>
       </Grid>
+      <Box className={classes.button}>
+        <Button onClick={handleRedirect}>Tiếp tục mua sắm</Button>
+      </Box>
     </Container>
   );
 }

@@ -1,4 +1,10 @@
-import { TableCell, TableRow, IconButton } from "@material-ui/core";
+import {
+  TableCell,
+  TableRow,
+  IconButton,
+  Typography,
+  Box,
+} from "@material-ui/core";
 import { DeleteOutline } from "@material-ui/icons";
 import PropTypes from "prop-types";
 import React from "react";
@@ -15,22 +21,43 @@ function CartItem({ cartItem = {} }) {
   const { product } = cartItem;
   const isSale = !!product.salePrice;
 
-  console.log(product);
-
   return (
     <TableRow className={classes.root}>
-      <TableCell>{product.nameProduct}</TableCell>
-      <TableCell>{cartItem.quantity}</TableCell>
+      <TableCell className={classes.product}>
+        <img src={product.thumbnail} alt={product.nameProduct} />
+        <Box>
+          <Typography className={classes.nameProduct}>
+            {product.nameProduct}
+          </Typography>
+          {isSale ? (
+            <Box className={classes.priceBox}>
+              <Typography className={classes.salePrice}>
+                {formatPrice(product.salePrice)}
+              </Typography>
+              <Typography className={classes.originPrice}>
+                {formatPrice(product.originPrice)}
+              </Typography>
+            </Box>
+          ) : (
+            <Box className={classes.priceBox}>
+              <Typography className={classes.salePrice}>
+                {formatPrice(product.originPrice)}
+              </Typography>
+            </Box>
+          )}
+        </Box>
+      </TableCell>
+      <TableCell align="center">{cartItem.quantity}</TableCell>
       {isSale ? (
-        <TableCell>
+        <TableCell align="center">
           {formatPrice(product.salePrice * cartItem.quantity)}
         </TableCell>
       ) : (
-        <TableCell>
+        <TableCell align="center">
           {formatPrice(product.originPrice * cartItem.quantity)}
         </TableCell>
       )}
-      <TableCell>
+      <TableCell align="right">
         <IconButton>
           <DeleteOutline />
         </IconButton>

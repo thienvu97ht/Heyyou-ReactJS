@@ -26,9 +26,9 @@ function CartList({ cartItems = [] }) {
           <TableHead>
             <TableRow className={classes.headingTable}>
               <TableCell>Sản phẩm</TableCell>
-              <TableCell>Số lượng</TableCell>
-              <TableCell>Tổng tiền</TableCell>
-              <TableCell>Xóa</TableCell>
+              <TableCell align="center">Số lượng</TableCell>
+              <TableCell align="center">Tổng tiền</TableCell>
+              <TableCell align="right">Xóa</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
