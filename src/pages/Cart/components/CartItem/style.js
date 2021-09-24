@@ -13,18 +13,25 @@ export const useStyles = makeStyles((theme) => ({
 
   product: {
     display: "flex",
+    margin: "0",
 
-    "& > img": {
-      maxWidth: "150px",
-    },
+    "& > button": {
+      padding: "0",
 
-    "& > div": {
-      marginLeft: "20px",
+      "& > span": {
+        "& > img": {
+          maxWidth: "150px",
+        },
+
+        "& > div": {
+          marginLeft: "20px",
+        },
+      },
     },
   },
 
   nameProduct: {
-    height: "40px",
+    // height: "40px",
   },
 
   priceBox: {

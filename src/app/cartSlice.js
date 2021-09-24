@@ -19,29 +19,34 @@ export const addToCart = createAsyncThunk(
 
     const index = cartItems.findIndex((x) => x.id === payload.id);
 
-    console.log("payload: ", payload);
-    console.log("cartItems: ", cartItems);
-
     if (index >= 0) {
       // San pham da co trong gio hang
-      console.log("Update số lượng");
+
       const newItem = {
         ...payload,
         quantity: payload.quantity + cartItems[index].quantity,
       };
-
-      console.log("newItem: ", newItem);
 
       const data = await cartApi.updateCart(newItem);
       localStorage.setItem(StorageKeys.CART, JSON.stringify(data));
       return data;
     } else {
       // San pham chua co trong gio hang
-      console.log("Thêm mới");
+
       const data = await cartApi.addToCart(payload);
       localStorage.setItem(StorageKeys.CART, JSON.stringify(data));
       return data;
     }
+  }
+);
+
+export const removeCartItem = createAsyncThunk(
+  "cart/removeCartItem",
+  async (payload) => {
+    const data = await cartApi.removeCartItem(payload);
+
+    localStorage.setItem(StorageKeys.CART, JSON.stringify(data));
+    return data;
   }
 );
 
@@ -74,6 +79,10 @@ const cartSlice = createSlice({
     },
 
     [addToCart.fulfilled]: (state, action) => {
+      state.cartItems = action.payload;
+    },
+
+    [removeCartItem.fulfilled]: (state, action) => {
       state.cartItems = action.payload;
     },
   },

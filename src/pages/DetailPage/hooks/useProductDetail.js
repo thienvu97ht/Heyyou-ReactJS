@@ -16,6 +16,7 @@ function useProductDetail(productId) {
           ...data,
           images,
         };
+
         setProduct(newProduct);
       } catch (error) {
         console.log("Failed to fetch product", error);

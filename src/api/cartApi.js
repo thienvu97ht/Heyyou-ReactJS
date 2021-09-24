@@ -57,6 +57,25 @@ const cartApi = {
 
     return productInCart;
   },
+
+  async removeCartItem(payload) {
+    const url = `/carts/deleteProductInCart.php`;
+    const data = await axiosClient.post(url, payload);
+
+    const productInCart = data.map((item) => ({
+      id: Number.parseInt(item.id),
+      product: {
+        id: Number.parseInt(item.id),
+        nameProduct: item.nameProduct,
+        salePrice: Number.parseInt(item.salePrice),
+        originPrice: Number.parseInt(item.originPrice),
+        thumbnail: item.thumbnail,
+      },
+      quantity: Number.parseInt(item.quantity),
+    }));
+
+    return productInCart;
+  },
 };
 
 export default cartApi;

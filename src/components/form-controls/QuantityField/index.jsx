@@ -65,7 +65,7 @@ const useStyles = makeStyles((theme) => ({
 
 function QuantityField(props) {
   const classes = useStyles();
-  const { form, name, label } = props;
+  const { form, name, label, size } = props;
   const { control, setValue } = form;
 
   return (
@@ -87,6 +87,7 @@ function QuantityField(props) {
             <Typography>{label}</Typography>
             <Box className={classes.box}>
               <IconButton
+                size={size}
                 className={classes.removeBtn}
                 onClick={() =>
                   setValue(
@@ -108,6 +109,7 @@ function QuantityField(props) {
               />
 
               <IconButton
+                size={size}
                 className={classes.addBtn}
                 onClick={() =>
                   setValue(
