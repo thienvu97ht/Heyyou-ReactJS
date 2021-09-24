@@ -98,6 +98,7 @@ function ProductPage() {
             variant="outlined"
             shape="rounded"
             size="large"
+            siblingCount={0}
           />
         </Box>
       </Container>

@@ -12,11 +12,14 @@ Product.propTypes = {
 function Product({ product = {} }) {
   const classes = useStyles();
   const history = useHistory();
+  const isSale = !!product.salePrice;
 
   const handleClick = () => {
     // Navigate to detail page: /products/:productId
     history.push(`/products/${product.id}`);
   };
+
+  console.log(product);
 
   return (
     <Box className={classes.root} onClick={handleClick}>
@@ -27,9 +30,22 @@ function Product({ product = {} }) {
         <Typography className={classes.nameProduct}>
           {product.nameProduct}
         </Typography>
-        <Typography className={classes.price}>
-          {formatPrice(product.salePrice)}
-        </Typography>
+        {isSale ? (
+          <Box className={classes.priceBox}>
+            <Typography className={classes.salePrice}>
+              {formatPrice(product.salePrice)}
+            </Typography>
+            <Typography className={classes.originPrice}>
+              {formatPrice(product.originPrice)}
+            </Typography>
+          </Box>
+        ) : (
+          <Box className={classes.priceBox}>
+            <Typography className={classes.salePrice}>
+              {formatPrice(product.originPrice)}
+            </Typography>
+          </Box>
+        )}
       </Box>
     </Box>
   );

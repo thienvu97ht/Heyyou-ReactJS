@@ -23,10 +23,29 @@ export const useStyles = makeStyles((theme) => ({
     fontWeight: "500",
     fontSize: "15px",
     marginBottom: "10px",
+    height: "40px",
   },
 
-  price: {
-    fontSize: "15px",
-    fontWeight: "400",
+  priceBox: {
+    display: "flex",
+    alignItems: "flex-end",
+    marginBottom: "15px",
+    justifyContent: "center",
+  },
+
+  salePrice: {
+    fontSize: "16px",
+    color: "#000",
+    margin: 0,
+    lineHeight: 1,
+    fontWeight: 500,
+  },
+
+  originPrice: {
+    fontSize: "16px",
+    marginLeft: "20px",
+    lineHeight: 1,
+    fontWeight: 300,
+    textDecoration: "line-through",
   },
 }));
