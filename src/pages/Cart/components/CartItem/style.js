@@ -30,10 +30,6 @@ export const useStyles = makeStyles((theme) => ({
     },
   },
 
-  nameProduct: {
-    // height: "40px",
-  },
-
   priceBox: {
     display: "flex",
     alignItems: "flex-end",

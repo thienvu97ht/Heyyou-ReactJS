@@ -1,6 +1,7 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Box, Button } from "@material-ui/core";
 import QuantityField from "components/form-controls/QuantityField";
+import { useSnackbar } from "notistack";
 import PropTypes from "prop-types";
 import React from "react";
 import { useForm } from "react-hook-form";
@@ -13,6 +14,7 @@ AddToCartForm.propTypes = {
 
 function AddToCartForm({ onSubmit = null, quantity }) {
   const classes = useStyles();
+  const { enqueueSnackbar } = useSnackbar();
 
   const schema = yup.object().shape({
     quantity: yup
@@ -33,6 +35,10 @@ function AddToCartForm({ onSubmit = null, quantity }) {
   const handleSubmit = async (values) => {
     if (onSubmit) {
       await onSubmit(values);
+      enqueueSnackbar("Thêm vào giỏ hàng thành công", {
+        variant: "success",
+        autoHideDuration: 2000,
+      });
     }
   };
 

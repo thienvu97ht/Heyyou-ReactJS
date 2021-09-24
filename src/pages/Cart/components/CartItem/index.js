@@ -47,9 +47,7 @@ function CartItem({ cartItem = {} }) {
         <Button onClick={handleRedirect}>
           <img src={product.thumbnail} alt={product.nameProduct} />
           <Box>
-            <Typography className={classes.nameProduct}>
-              {product.nameProduct}
-            </Typography>
+            <Typography>{product.nameProduct}</Typography>
             {isSale ? (
               <Box className={classes.priceBox}>
                 <Typography className={classes.salePrice}>
