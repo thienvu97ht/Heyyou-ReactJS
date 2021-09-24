@@ -46,8 +46,8 @@ function ProductSort({ currentSort, onChange }) {
             <MenuItem value="sold:DESC">Bán chạy nhất</MenuItem>
             <MenuItem value="created_at:ASC">Cũ nhất</MenuItem>
             <MenuItem value="created_at:DESC">Mới nhất</MenuItem>
-            <MenuItem value="price:ASC">Giá thấp tới cao</MenuItem>
-            <MenuItem value="price:DESC">Giá cao xuống thấp</MenuItem>
+            <MenuItem value="origin_price:ASC">Giá thấp tới cao</MenuItem>
+            <MenuItem value="origin_price:DESC">Giá cao xuống thấp</MenuItem>
             <MenuItem value="name:ASC">Tên: A-Z</MenuItem>
             <MenuItem value="name:DESC">Tên: Z-A</MenuItem>
           </Select>

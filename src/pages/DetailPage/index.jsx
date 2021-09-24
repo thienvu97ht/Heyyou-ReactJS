@@ -13,8 +13,6 @@ import ProductThumbnail from "./components/ProductThumbnail";
 import useProductDetail from "./hooks/useProductDetail";
 import { useStyles } from "./style";
 
-DetailPage.propTypes = {};
-
 function DetailPage() {
   const classes = useStyles();
   const history = useHistory();

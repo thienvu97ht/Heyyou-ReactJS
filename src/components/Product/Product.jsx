@@ -19,8 +19,6 @@ function Product({ product = {} }) {
     history.push(`/products/${product.id}`);
   };
 
-  console.log(product);
-
   return (
     <Box className={classes.root} onClick={handleClick}>
       <Box className={classes.img}>
