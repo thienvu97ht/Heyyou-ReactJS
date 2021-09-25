@@ -1,19 +1,16 @@
 import { Container, Grid } from "@material-ui/core";
-import { clearCart } from "app/cartSlice";
-import { logout } from "app/userSlice";
-import { useSnackbar } from "notistack";
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
+import AccountGeneralInfo from "./components/AccountGeneralInfo";
+import AccountMenu from "./components/AccountMenu";
 import { useStyles } from "./style";
 
 AccountPage.propTypes = {};
 
 function AccountPage(props) {
   const classes = useStyles();
-  const dispatch = useDispatch();
   const history = useHistory();
-  const { enqueueSnackbar } = useSnackbar();
   const loggedInUser = useSelector((state) => state.user.current);
   const isLoggedIn = !!loggedInUser.email;
 
@@ -21,26 +18,14 @@ function AccountPage(props) {
     !isLoggedIn && history.push("/auth");
   }, [isLoggedIn, history]);
 
-  const handleLogout = () => {
-    const action = logout();
-    dispatch(action);
-    dispatch(clearCart());
-
-    enqueueSnackbar("Đăng xuất thành công", {
-      variant: "success",
-      autoHideDuration: 2000,
-    });
-    history.push("/");
-  };
-
   return (
     <Container className={classes.root}>
       <Grid container spacing={3}>
         <Grid item lg={3} md={3} sm={12} xs={12}>
-          123
+          <AccountMenu user={loggedInUser} />
         </Grid>
         <Grid item lg={9} md={9} sm={12} xs={12}>
-          <button onClick={handleLogout}>Đăng xuất</button>
+          <AccountGeneralInfo />
         </Grid>
       </Grid>
     </Container>

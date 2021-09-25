@@ -47,6 +47,10 @@ export const useStyles = makeStyles((theme) => ({
   },
 
   note: {
+    "& > p": {
+      marginBottom: "5px",
+    },
+
     "& > textarea": {
       marginTop: "0px",
       marginBottom: "0px",
