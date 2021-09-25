@@ -16,7 +16,9 @@ function AddressPage(props) {
     history.push("/account/address");
   };
 
-  const handleAddAddress = () => {};
+  const handleAddAddress = () => {
+    history.push("/account/address/add");
+  };
 
   if (addresses.length <= 0) {
     return (

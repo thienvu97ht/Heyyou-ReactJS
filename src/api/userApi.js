@@ -28,6 +28,18 @@ const userApi = {
     const url = `/auth/newPass.php`;
     return axiosClient.post(url, data);
   },
+
+  async addAddress(data) {
+    const url = `/user/addAddress.php`;
+    const resp = await axiosClient.post(url, data);
+
+    return {
+      user: {
+        ...resp.user,
+        addresses: resp.addresses,
+      },
+    };
+  },
 };
 
 export default userApi;
