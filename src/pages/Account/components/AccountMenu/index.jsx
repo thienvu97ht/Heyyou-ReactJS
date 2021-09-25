@@ -2,8 +2,11 @@ import { Box, Typography } from "@material-ui/core";
 import React from "react";
 import { NavLink, useRouteMatch } from "react-router-dom";
 import { useStyles } from "./style";
+import PropTypes from "prop-types";
 
-AccountMenu.propTypes = {};
+AccountMenu.propTypes = {
+  user: PropTypes.object,
+};
 
 function AccountMenu({ user = {} }) {
   const classes = useStyles();

@@ -1,9 +1,17 @@
 import axiosClient from "./axiosClient";
 
 const userApi = {
-  checkLogin: (data) => {
+  async checkLogin(data) {
     const url = `/auth/login.php`;
-    return axiosClient.post(url, data);
+    const resp = await axiosClient.post(url, data);
+
+    return {
+      access_token: resp.access_token,
+      user: {
+        ...resp.user,
+        addresses: resp.addresses,
+      },
+    };
   },
 
   register: (data) => {

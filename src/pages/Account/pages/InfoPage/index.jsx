@@ -5,14 +5,14 @@ import { useSnackbar } from "notistack";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import AccountAddress from "../AccountAddress";
-import AccountOders from "../AccountOders";
+import AccountAddress from "../AddressPage";
+import AccountOders from "../OdersPage";
 import { Button } from "@material-ui/core";
 import { useStyles } from "./style";
 
-AccountInfo.propTypes = {};
+InfoPage.propTypes = {};
 
-function AccountInfo(props) {
+function InfoPage(props) {
   const classes = useStyles();
   const loggedInUser = useSelector((state) => state.user.current);
 
@@ -62,4 +62,4 @@ function AccountInfo(props) {
   );
 }
 
-export default AccountInfo;
+export default InfoPage;
