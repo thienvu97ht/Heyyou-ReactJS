@@ -39,9 +39,6 @@ export const useStyles = makeStyles((theme) => ({
   },
 
   selectBox: {
-    display: "flex",
-    alignItems: "center",
-
     "& > p": {
       marginRight: "10px",
       fontSize: "14px",
@@ -53,11 +50,56 @@ export const useStyles = makeStyles((theme) => ({
         borderColor: "#000",
       },
     },
+
+    "& > button": {
+      paddingLeft: "0",
+      marginTop: "10px",
+
+      color: "#338dbc",
+    },
   },
 
   select: {
     "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
       borderColor: "#000",
+    },
+  },
+
+  footer: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+
+    "& > a": {
+      textDecoration: "none",
+      color: "#338dbc",
+    },
+
+    "& > button": {
+      backgroundColor: "#286f94",
+      padding: "10px 20px",
+      color: "#fff",
+
+      "&:hover": {
+        backgroundColor: "#338dbc",
+      },
+    },
+  },
+
+  emptyAddress: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: "20px",
+
+    "& > p": {
+      fontStyle: "italic",
+      marginLeft: "20px",
+      color: "#555",
+    },
+
+    "& > button": {
+      color: "#338dbc",
     },
   },
 }));

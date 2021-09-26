@@ -37,4 +37,16 @@ export const useStyles = makeStyles((theme) => ({
       },
     },
   },
+
+  emptyCart: {
+    textAlign: "center",
+
+    "& > p": {
+      marginTop: "10px",
+    },
+
+    "& > div": {
+      marginTop: "30px",
+    },
+  },
 }));

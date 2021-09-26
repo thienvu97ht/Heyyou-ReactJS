@@ -18,6 +18,24 @@ function CartPage() {
     history.push("/collections/allitems");
   };
 
+  if (cartItems?.length <= 0) {
+    return (
+      <Container className={classes.root}>
+        <Typography className={classes.headingTitle}>GIỎ HÀNG</Typography>
+        <Box className={classes.emptyCart}>
+          <img
+            src="https://theme.hstatic.net/200000031420/1000757913/14/empty_cart.png?v=10"
+            alt="empty-cart"
+          />
+          <Typography>Không có sản phẩm nào trong giỏ hàng của bạn</Typography>
+          <Box className={classes.button}>
+            <Button onClick={handleRedirect}>Tiếp tục mua sắm</Button>
+          </Box>
+        </Box>
+      </Container>
+    );
+  }
+
   return (
     <Container className={classes.root}>
       <Typography className={classes.headingTitle}>GIỎ HÀNG</Typography>
