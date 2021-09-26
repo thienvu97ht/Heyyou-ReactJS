@@ -25,7 +25,11 @@ function Checkouts() {
 
   useEffect(() => {
     !isLoggedIn && history.push("/auth");
-  }, [isLoggedIn, history]);
+
+    if (cartItems?.length <= 0) {
+      history.push("/cart");
+    }
+  }, [isLoggedIn, history, cartItems]);
 
   const handleAddressChange = (values) => {
     setAddress(values);
