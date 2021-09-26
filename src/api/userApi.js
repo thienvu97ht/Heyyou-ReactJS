@@ -40,6 +40,18 @@ const userApi = {
       },
     };
   },
+
+  async removeAddress(id) {
+    const url = `/user/deleteAddress.php`;
+    const resp = await axiosClient.post(url, id);
+
+    return {
+      user: {
+        ...resp.user,
+        addresses: resp.addresses,
+      },
+    };
+  },
 };
 
 export default userApi;

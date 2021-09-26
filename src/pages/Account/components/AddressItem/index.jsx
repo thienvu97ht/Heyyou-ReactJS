@@ -5,10 +5,17 @@ import { Box, Typography, Button } from "@material-ui/core";
 
 AddressItem.propTypes = {
   address: PropTypes.object,
+  onRemove: PropTypes.func,
 };
 
-function AddressItem({ address = {} }) {
+function AddressItem({ address = {}, onRemove }) {
   const classes = useStyles();
+
+  const handleRemoveAddress = (id) => {
+    if (onRemove) {
+      onRemove(id);
+    }
+  };
 
   return (
     <Box className={classes.root}>
@@ -18,7 +25,7 @@ function AddressItem({ address = {} }) {
         <Typography>Điện thoại: {address.phone}</Typography>
         <Box className={classes.addressAction}>
           <Button>Sửa</Button>
-          <Button>Xóa</Button>
+          <Button onClick={() => handleRemoveAddress(address.id)}>Xóa</Button>
         </Box>
       </Box>
     </Box>
