@@ -1,5 +1,6 @@
 import AccountPage from "pages/Account";
 import CartPage from "pages/Cart";
+import Checkouts from "pages/Checkouts";
 import DetailPage from "pages/DetailPage";
 import ProductPage from "pages/Products";
 import { Route, Switch } from "react-router-dom";
@@ -25,6 +26,7 @@ function App() {
         <Route path="/collections/:categories" exact component={ProductPage} />
         <Route path="/products/:productId" component={DetailPage} />
         <Route path="/cart" component={CartPage} />
+        <Route path="/checkouts" component={Checkouts} />
 
         <Route component={NotFound} />
       </Switch>

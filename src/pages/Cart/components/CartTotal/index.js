@@ -3,6 +3,10 @@ import React from "react";
 import { useStyles } from "./style";
 import PropTypes from "prop-types";
 import { formatPrice } from "utils";
+import { useHistory } from "react-router";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addNote } from "app/cartSlice";
 
 CartTotal.propTypes = {
   total: PropTypes.number,
@@ -10,6 +14,17 @@ CartTotal.propTypes = {
 
 function CartTotal({ total = 0 }) {
   const classes = useStyles();
+  const history = useHistory();
+  const dispatch = useDispatch();
+
+  const [note, setNote] = useState("");
+
+  const handleRedirect = () => {
+    const action = addNote(note);
+    dispatch(action);
+
+    history.push("/checkouts");
+  };
 
   return (
     <Box className={classes.root}>
@@ -19,7 +34,7 @@ function CartTotal({ total = 0 }) {
           <Typography>{formatPrice(total)}</Typography>
         </Box>
         <Box className={classes.finalTotal}>
-          <Button>THANH TOÁN</Button>
+          <Button onClick={handleRedirect}>THANH TOÁN</Button>
         </Box>
       </Box>
 
@@ -29,6 +44,8 @@ function CartTotal({ total = 0 }) {
           aria-label="empty textarea"
           placeholder="Bạn muốn mô tả rõ hơn về đơn hàng"
           minRows={5}
+          defaultValue={note}
+          onChange={(event) => setNote(event.target.value)}
         />
       </Box>
     </Box>

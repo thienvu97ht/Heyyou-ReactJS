@@ -1,5 +1,5 @@
 import { Box, Button } from "@material-ui/core";
-import { addAddress, updateAddress } from "app/userSlice";
+import { updateAddress } from "app/userSlice";
 import { useSnackbar } from "notistack";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";

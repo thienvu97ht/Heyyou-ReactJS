@@ -1,13 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import cartApi from "api/cartApi";
-import StorageKeys from "constants/storage-keys";
 
 export const getProductsInCart = createAsyncThunk(
   "cart/getProductsInCart",
   async (payload) => {
     const data = await cartApi.getProductsInCart(payload);
 
-    localStorage.setItem(StorageKeys.CART, JSON.stringify(data));
     return data;
   }
 );
@@ -28,13 +26,11 @@ export const addToCart = createAsyncThunk(
       };
 
       const data = await cartApi.updateCart(newItem);
-      localStorage.setItem(StorageKeys.CART, JSON.stringify(data));
       return data;
     } else {
       // San pham chua co trong gio hang
 
       const data = await cartApi.addToCart(payload);
-      localStorage.setItem(StorageKeys.CART, JSON.stringify(data));
       return data;
     }
   }
@@ -45,7 +41,6 @@ export const removeCartItem = createAsyncThunk(
   async (payload) => {
     const data = await cartApi.removeCartItem(payload);
 
-    localStorage.setItem(StorageKeys.CART, JSON.stringify(data));
     return data;
   }
 );
@@ -53,23 +48,16 @@ export const removeCartItem = createAsyncThunk(
 const cartSlice = createSlice({
   name: "cart",
   initialState: {
-    showMiniCart: false,
-    cartItems: JSON.parse(localStorage.getItem(StorageKeys.CART)) || [],
+    cartItems: [],
+    note: "",
   },
   reducers: {
-    showMiniCart(state) {
-      state.showMiniCart(true);
-    },
-
-    hideMiniCart(state) {
-      state.showMiniCart(false);
-    },
-
     clearCart(state, action) {
-      // clear local storage
-      localStorage.removeItem(StorageKeys.CART);
-
       state.cartItems = [];
+    },
+
+    addNote(state, action) {
+      state.note = action.payload;
     },
   },
 
@@ -89,5 +77,5 @@ const cartSlice = createSlice({
 });
 
 const { actions, reducer } = cartSlice;
-export const { showMiniCart, hideMiniCart, clearCart } = actions;
+export const { clearCart, addNote } = actions;
 export default reducer;

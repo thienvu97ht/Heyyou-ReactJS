@@ -12,6 +12,7 @@ function AddressPage(props) {
   const classes = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
+
   const { addresses } = useSelector((state) => state.user.current);
 
   const handleShowAddress = () => {
@@ -22,7 +23,7 @@ function AddressPage(props) {
     history.push("/account/address/add");
   };
 
-  if (addresses.length <= 0) {
+  if (addresses?.length <= 0) {
     return (
       <Box>
         <Box className={classes.header}>
@@ -48,7 +49,7 @@ function AddressPage(props) {
         <Button onClick={handleShowAddress}>Xem tất cả</Button>
       </Box>
       <Grid container spacing={2}>
-        {addresses.map((item) => (
+        {addresses?.map((item) => (
           <Grid key={item.id} item xs={12} sm={12} md={6} lg={6}>
             <AddressItem address={item} onRemove={handleRemove} />
           </Grid>
