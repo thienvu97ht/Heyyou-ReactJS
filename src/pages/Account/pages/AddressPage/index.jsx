@@ -37,8 +37,6 @@ function AddressPage(props) {
   }
 
   const handleRemove = async (id) => {
-    console.log(id);
-
     const action = removeAddress({ id });
     await dispatch(action);
   };

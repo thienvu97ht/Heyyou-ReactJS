@@ -31,7 +31,7 @@ function NewAddress(props) {
 
   return (
     <Box className={classes.root}>
-      <NewAddressForm onSubmit={handleSubmit} />
+      <NewAddressForm onSubmit={handleSubmit} labelButton="Thêm" />
       <Box className={classes.cancelButton}>
         <Button onClick={handleCancel}>Hủy</Button>
       </Box>

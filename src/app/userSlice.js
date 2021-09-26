@@ -39,6 +39,17 @@ export const removeAddress = createAsyncThunk(
   }
 );
 
+export const updateAddress = createAsyncThunk(
+  "user/updateAddress",
+  async (payload) => {
+    const data = await userApi.updateAddress(payload);
+
+    localStorage.setItem(StorageKeys.USER, JSON.stringify(data.user));
+
+    return data.user;
+  }
+);
+
 const userSlice = createSlice({
   name: "user",
   initialState: {
@@ -64,6 +75,10 @@ const userSlice = createSlice({
     },
 
     [removeAddress.fulfilled]: (state, action) => {
+      state.current = action.payload;
+    },
+
+    [updateAddress.fulfilled]: (state, action) => {
       state.current = action.payload;
     },
   },

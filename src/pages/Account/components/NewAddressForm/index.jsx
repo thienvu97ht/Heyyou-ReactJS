@@ -5,37 +5,37 @@ import PropTypes from "prop-types";
 import React from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
+import "yup-phone";
 import { useStyle } from "./style.js";
 
 NewAddressForm.propTypes = {
   onSubmit: PropTypes.func,
+  address: PropTypes.object,
+  labelButton: PropTypes.string,
 };
 
-function NewAddressForm(props) {
+function NewAddressForm({ labelButton, onSubmit, address = {} }) {
   const classes = useStyle();
+  const phoneRegExp =
+    /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
   const schema = yup.object().shape({
     fullname: yup.string().required("Vui lòng nhập họ tên của bạn"),
     address: yup.string().required("Vui lòng nhập địa chỉ của bạn"),
-    phone: yup
-      .number()
-      .typeError("That doesn't look like a phone number")
-      .min(8, "Vui lòng nhập ít nhất 8 ký tự")
-      .required("Số điện thoại là bắt buộc"),
+    phone: yup.string().matches(phoneRegExp, "Số điện thoại không hợp lệ"),
   });
 
   const form = useForm({
     defaultValues: {
-      fullname: "",
-      address: "",
-      phone: "",
+      fullname: address.fullname || "",
+      address: address.address || "",
+      phone: address.phone || "",
     },
     reValidateMode: "onSubmit",
     resolver: yupResolver(schema),
   });
 
   const handleSubmit = async (values) => {
-    const { onSubmit } = props;
     if (onSubmit) {
       await onSubmit(values);
     }
@@ -59,7 +59,7 @@ function NewAddressForm(props) {
           fullWidth
           disabled={isSubmitting}
           size="large">
-          Thêm
+          {labelButton}
         </Button>
       </form>
     </div>

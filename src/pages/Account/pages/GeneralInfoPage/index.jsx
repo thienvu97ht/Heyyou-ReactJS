@@ -6,6 +6,7 @@ import AddressPage from "../AddressPage";
 import InfoPage from "../InfoPage";
 import NewAddress from "../NewAddress";
 import OdersPage from "../OdersPage";
+import UpdateAddress from "../UpdateAddress";
 import { useStyles } from "./style";
 
 function GeneralInfoPage() {
@@ -19,6 +20,10 @@ function GeneralInfoPage() {
         <Route path={`${match.path}/orders`} component={OdersPage} exact />
         <Route path={`${match.path}/address`} component={AddressPage} exact />
         <Route path={`${match.path}/address/add`} component={NewAddress} />
+        <Route
+          path={`${match.path}/address/edit/:id`}
+          component={UpdateAddress}
+        />
 
         <Route component={NotFound} />
       </Switch>
