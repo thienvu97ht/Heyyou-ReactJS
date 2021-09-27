@@ -35,8 +35,22 @@ function ForgotPassword() {
     }
   };
 
-  const handleChangePassword = (values) => {
-    console.log(values);
+  const handleChangePassword = async (values) => {
+    const resp = await userApi.newPassword(values);
+
+    if (resp.status === 1) {
+      setMode(MODE.NEWPASSWORD);
+
+      enqueueSnackbar(resp.message, {
+        variant: "success",
+        autoHideDuration: 2000,
+      });
+    } else {
+      enqueueSnackbar(resp.message, {
+        variant: "error",
+        autoHideDuration: 2000,
+      });
+    }
   };
 
   return (
