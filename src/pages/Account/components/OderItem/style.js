@@ -8,4 +8,13 @@ export const useStyles = makeStyles((theme) => ({
       fontSize: "16px",
     },
   },
+
+  productBox: {
+    display: "flex",
+    justifyContent: "space-between",
+
+    "& > p": {
+      lineHeight: "28px",
+    },
+  },
 }));

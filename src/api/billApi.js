@@ -21,9 +21,9 @@ const billApi = {
 
     const bills = resp.listBill?.map((item) => ({
       ...item,
-      products: resp.billDetail?.filter(
-        (itemfilter) => itemfilter[0].id_bill === item.id
-      ),
+      products: resp.billDetail
+        ?.filter((itemfilter) => itemfilter[0].id_bill === item.id)
+        .flat(),
     }));
 
     return bills;
