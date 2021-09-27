@@ -28,4 +28,22 @@ xóa _page ra khỏi params
     }
 }
 
+bills {
+    id: 123,
+    created_at: 13/06/2021,
+    total: 100000,
+    products: [
+        {
+            id: 1,
+            name: heyoo,
+            quantity: 2,
+        },
+        {
+            id: 2,
+            name: heyoo 2,
+            quantity: 1,
+        }
+    ]
+}
+
 -->

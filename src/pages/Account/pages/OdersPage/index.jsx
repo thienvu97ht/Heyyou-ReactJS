@@ -9,7 +9,12 @@ import {
   TableRow,
   Typography,
 } from "@material-ui/core";
+import { unwrapResult } from "@reduxjs/toolkit";
+import { getBill } from "app/billSlice";
 import React from "react";
+import { useState } from "react";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 import OderItem from "../../components/OderItem";
 import { useStyles } from "./style";
@@ -19,10 +24,20 @@ OdersPage.propTypes = {};
 function OdersPage(props) {
   const classes = useStyles();
   const history = useHistory();
+  const dispatch = useDispatch();
+  const [billList, setBillList] = useState([]);
 
   const handleShowOders = () => {
     history.push("/account/orders");
   };
+
+  useEffect(() => {
+    (async () => {
+      const action = getBill();
+      const resultAction = await dispatch(action);
+      setBillList(unwrapResult(resultAction));
+    })();
+  }, [dispatch]);
 
   return (
     <Box className={classes.root}>
@@ -44,7 +59,9 @@ function OdersPage(props) {
               </TableRow>
             </TableHead>
             <TableBody>
-              <OderItem />
+              {billList?.map((item) => (
+                <OderItem key={item.id} bill={item} />
+              ))}
             </TableBody>
           </Table>
         </TableContainer>

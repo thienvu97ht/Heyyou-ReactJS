@@ -2,6 +2,8 @@ import { makeStyles } from "@material-ui/core";
 
 export const useStyles = makeStyles((theme) => ({
   sections: {
+    marginBottom: "20px",
+
     "& > h3": {
       fontSize: "24px",
       marginBottom: "20px",
@@ -9,6 +11,8 @@ export const useStyles = makeStyles((theme) => ({
 
     "& > p": {
       marginBottom: "10px",
+      fontSize: "16px",
+      fontWeight: "bold",
     },
   },
 

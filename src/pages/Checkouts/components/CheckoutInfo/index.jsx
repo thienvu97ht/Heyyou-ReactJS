@@ -11,14 +11,24 @@ import {
 import { useStyles } from "./style";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
+import { cartTotalSelector } from "pages/Cart/selectors";
+import { useSelector } from "react-redux";
+import { addBill } from "app/billSlice";
+import { useDispatch } from "react-redux";
+import { clearCart } from "app/cartSlice";
 
 CheckoutInfo.propTypes = {
   user: PropTypes.object,
+  onChange: PropTypes.func,
+  note: PropTypes.string,
+  cartItems: PropTypes.array,
 };
 
-function CheckoutInfo({ user, onChange, address }) {
+function CheckoutInfo({ user, onChange, address, note = "", cartItems = [] }) {
   const classes = useStyles();
   const history = useHistory();
+  const dispatch = useDispatch();
+  const cartTotal = useSelector(cartTotalSelector);
 
   const handleSortChange = (event) => {
     if (onChange) onChange(event.target.value);
@@ -26,6 +36,26 @@ function CheckoutInfo({ user, onChange, address }) {
 
   const handleAddAddress = () => {
     history.push("/account/address/add");
+  };
+
+  const handleCheckouts = async () => {
+    const newOrder = {
+      addressId: address,
+      note: note,
+      total: cartTotal,
+      productList: cartItems?.map((item) => ({
+        id: item.id,
+        quantity: item.quantity,
+      })),
+    };
+
+    const action = addBill(newOrder);
+    await dispatch(action);
+
+    // Xóa giỏ hàng cũ
+    dispatch(clearCart());
+
+    history.push("/order-success");
   };
 
   return (
@@ -80,7 +110,7 @@ function CheckoutInfo({ user, onChange, address }) {
       </Box>
       <Box className={classes.footer}>
         <Link to="/cart">Giỏ hàng</Link>
-        <Button>Hoàn tất đặt hàng</Button>
+        <Button onClick={handleCheckouts}>Hoàn tất đặt hàng</Button>
       </Box>
     </Box>
   );
