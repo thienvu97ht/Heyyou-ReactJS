@@ -1,21 +1,21 @@
-import React from "react";
-import PropTypes from "prop-types";
 import {
   Box,
-  Typography,
   Button,
   FormControl,
-  Select,
   MenuItem,
+  Select,
+  Typography,
 } from "@material-ui/core";
-import { useStyles } from "./style";
+import { addBill } from "app/billSlice";
+import { clearCart } from "app/cartSlice";
+import { useSnackbar } from "notistack";
+import { cartTotalSelector } from "pages/Cart/selectors";
+import PropTypes from "prop-types";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
-import { cartTotalSelector } from "pages/Cart/selectors";
-import { useSelector } from "react-redux";
-import { addBill } from "app/billSlice";
-import { useDispatch } from "react-redux";
-import { clearCart } from "app/cartSlice";
+import { useStyles } from "./style";
 
 CheckoutInfo.propTypes = {
   user: PropTypes.object,
@@ -28,6 +28,8 @@ function CheckoutInfo({ user, onChange, address, note = "", cartItems = [] }) {
   const classes = useStyles();
   const history = useHistory();
   const dispatch = useDispatch();
+  const { enqueueSnackbar } = useSnackbar();
+
   const cartTotal = useSelector(cartTotalSelector);
 
   const handleSortChange = (event) => {
@@ -55,7 +57,9 @@ function CheckoutInfo({ user, onChange, address, note = "", cartItems = [] }) {
     // Xóa giỏ hàng cũ
     dispatch(clearCart());
 
-    history.push("/order-success");
+    enqueueSnackbar("Đặt hàng thành công!!! ❤️❤️❤️", {
+      variant: "success",
+    });
   };
 
   return (

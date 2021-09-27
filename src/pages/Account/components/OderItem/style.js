@@ -13,6 +13,12 @@ export const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "space-between",
 
+    "& > a": {
+      lineHeight: "28px",
+      color: "#000",
+      textDecoration: "none",
+    },
+
     "& > p": {
       lineHeight: "28px",
     },

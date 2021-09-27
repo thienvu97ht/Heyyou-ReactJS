@@ -4,6 +4,7 @@ import React from "react";
 import { formatPrice } from "utils";
 import { useStyles } from "./style";
 import * as dayjs from "dayjs";
+import { Link } from "react-router-dom";
 
 OderItem.propTypes = {
   bill: PropTypes.object,
@@ -19,7 +20,7 @@ function OderItem({ bill = {} }) {
       <TableCell>
         {bill.products?.map((item) => (
           <Box key={item.id_product} className={classes.productBox}>
-            <Typography>{item.name}</Typography>
+            <Link to={`/products/${item.id_product}`}>{item.name}</Link>
             <Typography>SL: {item.quantity}</Typography>
           </Box>
         ))}

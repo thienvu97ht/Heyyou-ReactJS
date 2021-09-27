@@ -1,29 +1,35 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Button, LinearProgress } from "@material-ui/core";
+import PasswordField from "components/form-controls/PasswordField/index.jsx";
 import PropTypes from "prop-types";
 import React from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
-import InputField from "../../../../components/form-controls/InputField/index.jsx";
 import { useStyle } from "./style.js";
 
-ForgotPasswordForm.propTypes = {
+NewPasswordForm.propTypes = {
   onSubmit: PropTypes.func,
 };
 
-function ForgotPasswordForm(props) {
+function NewPasswordForm(props) {
   const classes = useStyle();
 
   const schema = yup.object().shape({
-    email: yup
+    password: yup
       .string()
-      .required("Vui lòng nhập email của bạn")
-      .email("Vui lòng nhập một địa chỉ email hợp lệ"),
+      .required("Vui lòng nhập mật khẩu của bạn")
+      .min(6, "Vui lòng nhập ít nhất 6 ký tự"),
+
+    retypePassword: yup
+      .string()
+      .required("Vui lòng nhập lại mật khẩu của bạn")
+      .oneOf([yup.ref("password")], "Mật khẩu không khớp"),
   });
 
   const form = useForm({
     defaultValues: {
-      email: "",
+      password: "",
+      retypePassword: "",
     },
     reValidateMode: "onSubmit",
     resolver: yupResolver(schema),
@@ -43,7 +49,12 @@ function ForgotPasswordForm(props) {
       {isSubmitting && <LinearProgress className={classes.progress} />}
 
       <form onSubmit={form.handleSubmit(handleSubmit)}>
-        <InputField name="email" label="Email" form={form} />
+        <PasswordField name="password" label="Mật khẩu" form={form} />
+        <PasswordField
+          name="retypePassword"
+          label="Nhập lại mật khẩu"
+          form={form}
+        />
 
         <Button
           type="submit"
@@ -52,11 +63,11 @@ function ForgotPasswordForm(props) {
           fullWidth
           disabled={isSubmitting}
           size="large">
-          Gửi
+          Thay đổi mật khẩu
         </Button>
       </form>
     </div>
   );
 }
 
-export default ForgotPasswordForm;
+export default NewPasswordForm;

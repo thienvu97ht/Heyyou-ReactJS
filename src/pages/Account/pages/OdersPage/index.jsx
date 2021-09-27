@@ -39,6 +39,19 @@ function OdersPage(props) {
     })();
   }, [dispatch]);
 
+  if (billList.length <= 0) {
+    return (
+      <Box className={classes.root}>
+        <Box className={classes.header}>
+          <Typography>Các đơn hàng vừa đặt</Typography>
+        </Box>
+        <Box className={classes.ordersEmpty}>
+          <Typography>Bạn chưa đặt đơn hàng nào</Typography>
+        </Box>
+      </Box>
+    );
+  }
+
   return (
     <Box className={classes.root}>
       <Box className={classes.header}>

@@ -27,4 +27,12 @@ export const useStyles = makeStyles((theme) => ({
       fontSize: "15px",
     },
   },
+
+  ordersEmpty: {
+    "& > p": {
+      margin: "20px 0 20px 20px",
+      fontStyle: "italic",
+      color: "rgba(0,0,0,0.6)",
+    },
+  },
 }));

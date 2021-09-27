@@ -54,9 +54,6 @@ function AuthPage(props) {
 
             {mode === MODE.FORGOTPASSWORD && (
               <>
-                <Typography className={classes.titleBox}>
-                  QUÊN MẬT KHẨU
-                </Typography>
                 <ForgotPassword />
                 <button
                   className={classes.forgetPwd}
