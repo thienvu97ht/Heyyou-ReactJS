@@ -1,17 +1,22 @@
+import { Box, Typography } from "@material-ui/core";
 import userApi from "api/userApi";
 import { useSnackbar } from "notistack";
+import PropTypes from "prop-types";
 import React, { useState } from "react";
 import ForgotPasswordForm from "../ForgotPasswordForm";
-import { Typography, Box } from "@material-ui/core";
-import { useStyle } from "./style";
 import NewPasswordForm from "../NewPasswordForm";
+import { useStyle } from "./style";
 
 const MODE = {
   SENDEMAIL: "sendEmail",
   NEWPASSWORD: "newPassword",
 };
 
-function ForgotPassword() {
+ForgotPassword.propTypes = {
+  onChange: PropTypes.func,
+};
+
+function ForgotPassword({ onChange }) {
   const classes = useStyle();
   const { enqueueSnackbar } = useSnackbar();
 
@@ -39,7 +44,7 @@ function ForgotPassword() {
     const resp = await userApi.newPassword(values);
 
     if (resp.status === 1) {
-      setMode(MODE.NEWPASSWORD);
+      onChange();
 
       enqueueSnackbar(resp.message, {
         variant: "success",

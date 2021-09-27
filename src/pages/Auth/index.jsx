@@ -25,6 +25,10 @@ function AuthPage(props) {
 
   const [mode, setMode] = useState(MODE.LOGIN);
 
+  const handleChangeMode = () => {
+    setMode(MODE.LOGIN);
+  };
+
   return (
     <Container className={classes.root}>
       <Box className={classes.loginApp}>
@@ -54,7 +58,7 @@ function AuthPage(props) {
 
             {mode === MODE.FORGOTPASSWORD && (
               <>
-                <ForgotPassword />
+                <ForgotPassword onChange={handleChangeMode} />
                 <button
                   className={classes.forgetPwd}
                   onClick={() => setMode(MODE.LOGIN)}>
