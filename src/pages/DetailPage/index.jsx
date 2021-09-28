@@ -1,6 +1,7 @@
 import { Box, Container, Grid } from "@material-ui/core";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { addToCart } from "app/cartSlice";
+import { useSnackbar } from "notistack";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useRouteMatch } from "react-router";
@@ -19,6 +20,8 @@ function DetailPage() {
   const dispatch = useDispatch();
   const loggedInUser = useSelector((state) => state.user.current);
   const isLoggedIn = !!loggedInUser.email;
+
+  const { enqueueSnackbar } = useSnackbar();
 
   const {
     params: { productId },
@@ -49,6 +52,11 @@ function DetailPage() {
       quantity,
     });
     dispatch(action);
+
+    enqueueSnackbar("Thêm vào giỏ hàng thành công", {
+      variant: "success",
+      autoHideDuration: 2000,
+    });
   };
 
   const handleTabsChange = (newValue) => {
