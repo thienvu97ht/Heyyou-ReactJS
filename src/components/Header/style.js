@@ -112,12 +112,20 @@ export const useStyles = makeStyles((theme) => ({
   },
 
   searchBox: {
-    backgroundColor: "rgba(255,255,255,0.85)",
-    display: "flex",
-    alignItems: "center",
-    height: "38px",
-    borderRadius: "5px",
+    "& > form": {
+      backgroundColor: "rgba(255,255,255,0.85)",
+      display: "flex",
+      alignItems: "center",
+      height: "38px",
+      borderRadius: "5px",
 
-    paddingLeft: theme.spacing(1),
+      paddingLeft: theme.spacing(1),
+
+      "& > div": {
+        "& > div:hover input:before": {
+          borderBottom: "none",
+        },
+      },
+    },
   },
 }));

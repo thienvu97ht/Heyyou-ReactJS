@@ -46,4 +46,6 @@ bills {
     ]
 }
 
+REACT_APP_BASE_URL=https://api.vudeptrai.xyz/api
+
 -->

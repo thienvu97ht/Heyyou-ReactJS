@@ -19,6 +19,7 @@ function BestSeller({ className }) {
           _limit: 3,
           _sort: "sold:DESC",
           _category: "allitems",
+          _search: "",
         });
         setProductList(data);
       } catch (error) {

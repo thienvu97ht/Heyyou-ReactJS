@@ -20,6 +20,7 @@ function NewProducts({ className }) {
           _limit: 15,
           _sort: "created_at:DESC",
           _category: "allitems",
+          _search: "",
         });
         setProductList(data);
       } catch (error) {

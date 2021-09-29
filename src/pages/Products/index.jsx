@@ -16,13 +16,13 @@ function ProductPage() {
   const location = useLocation();
   const queryParams = useMemo(() => {
     const params = queryString.parse(location.search);
-
     return {
       ...params,
       _page: Number.parseInt(params._page) || 1,
       _limit: Number.parseInt(params._limit) || 12,
       _sort: params._sort || "sold:DESC",
       _category: match.params.categories || "allitems",
+      _search: params._search || "",
     };
   }, [location.search, match]);
 

@@ -8,7 +8,7 @@ ProductList.propTypes = {
 };
 
 function ProductList({ data = [], xs, sm, md, lg }) {
-  if (data.length <= 0) {
+  if (data?.length <= 0) {
     return (
       <Typography align="center" style={{ padding: "50px 0" }}>
         Không có sản phẩm nào!
@@ -19,7 +19,7 @@ function ProductList({ data = [], xs, sm, md, lg }) {
   return (
     <Box>
       <Grid container spacing={4}>
-        {data.map((product) => (
+        {data?.map((product) => (
           <Grid item key={product.id} xs={xs} sm={sm} md={md} lg={lg}>
             <Product product={product} />
           </Grid>

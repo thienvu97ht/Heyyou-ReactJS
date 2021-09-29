@@ -14,7 +14,7 @@ import { getProductsInCart } from "app/cartSlice";
 import { cartItemsCountSelector } from "pages/Cart/selectors";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useStyles } from "./style";
 
 const StyledBadge = withStyles((theme) => ({
@@ -38,6 +38,8 @@ function Header() {
 
   const cartItemsCount = useSelector(cartItemsCountSelector);
   const dispatch = useDispatch();
+
+  const history = useHistory();
 
   // const cartTotal = useSelector(cartTotalSelector);
   // console.log(cartTotal);
@@ -68,8 +70,18 @@ function Header() {
     setAnchorEl(null);
   };
 
-  const handleSearchClick = (e) => {
+  const handleOpenSearch = (e) => {
     setAnchorEl(e.currentTarget);
+  };
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const search = e.target.search.value;
+
+    history.push({
+      pathname: `/search`,
+      search: `_search=${search}`,
+    });
   };
 
   return (
@@ -107,7 +119,7 @@ function Header() {
               )}
             </Box>
             <Box component="li" style={{ marginLeft: "10px" }}>
-              <IconButton color="inherit" onClick={handleSearchClick}>
+              <IconButton color="inherit" onClick={handleOpenSearch}>
                 <Search />
               </IconButton>
             </Box>
@@ -138,10 +150,12 @@ function Header() {
         getContentAnchorEl={null}>
         <MenuItem>
           <Box className={classes.searchBox}>
-            <TextField placeholder="Tìm kiếm..." />
-            <IconButton color="inherit">
-              <Search />
-            </IconButton>
+            <form onSubmit={handleSearch}>
+              <TextField name="search" placeholder="Tìm kiếm..." />
+              <IconButton color="inherit" type="submit">
+                <Search />
+              </IconButton>
+            </form>
           </Box>
         </MenuItem>
       </StyleMenus>
