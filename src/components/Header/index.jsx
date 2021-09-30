@@ -88,6 +88,8 @@ function Header() {
   };
 
   const handleSearch = (e) => {
+    setAnchorEl(null);
+
     e.preventDefault();
     const search = e.target.search.value;
 
