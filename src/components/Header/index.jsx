@@ -125,10 +125,12 @@ function Header() {
     <>
       <Box className={classes.root}>
         <Container className={classes.header}>
-          <img
-            src="https://theme.hstatic.net/200000031420/1000719377/14/logo.png?v=154"
-            alt="Dương Vũ"
-          />
+          <Link to="/" color="inherit">
+            <img
+              src="https://theme.hstatic.net/200000031420/1000719377/14/logo.png?v=154"
+              alt="Dương Vũ"
+            />
+          </Link>
           <Box component="ul">
             <Box component="li">
               <Link to="/">TRANG CHỦ</Link>
