@@ -20,12 +20,12 @@ function Product({ product = {} }) {
   };
 
   return (
-    <Box className={classes.root} onClick={handleClick}>
-      <Box className={classes.img}>
+    <Box className={classes.root}>
+      <Box className={classes.img} onClick={handleClick}>
         <img src={product.thumbnail} alt={product.nameProduct} />
       </Box>
       <Box className={classes.content}>
-        <Typography className={classes.nameProduct}>
+        <Typography className={classes.nameProduct} onClick={handleClick}>
           {product.nameProduct}
         </Typography>
         {isSale ? (

@@ -12,6 +12,9 @@ export const useStyles = makeStyles((theme) => ({
 
   img: {
     minHeight: "279px",
+    "&:hover": {
+      cursor: "pointer",
+    },
 
     [theme.breakpoints.only("md")]: {
       minHeight: "216px",
@@ -49,6 +52,9 @@ export const useStyles = makeStyles((theme) => ({
     fontWeight: "500",
     fontSize: "15px",
     marginBottom: "10px",
+    "&:hover": {
+      cursor: "pointer",
+    },
 
     [theme.breakpoints.up("sm")]: {
       height: "40px",

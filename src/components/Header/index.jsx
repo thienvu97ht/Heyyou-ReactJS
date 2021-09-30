@@ -171,6 +171,7 @@ function Header() {
             </Box>
           </Box>
         </Container>
+
         <Box className={classes.headerMobile}>
           <Box className={classes.navLeft}>
             <IconButton onClick={handleOpenNavMobile}>
@@ -224,7 +225,7 @@ function Header() {
       <Drawer
         open={drawerOpen}
         className={classes.Drawer}
-        onBackdropClick={handleCloseNavMobile}>
+        onClose={handleCloseNavMobile}>
         <MenuItem className={classes.inputForm}>
           <form onSubmit={handleSearchMobile}>
             <div>

@@ -47,5 +47,6 @@ bills {
 }
 
 REACT_APP_BASE_URL=https://api.vudeptrai.xyz/api
+REACT_APP_BASE_URL=http://localhost/project/Asm-API/api
 
 -->
