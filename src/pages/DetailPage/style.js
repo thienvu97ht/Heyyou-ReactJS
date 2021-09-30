@@ -4,6 +4,11 @@ export const useStyles = makeStyles((theme) => ({
   root: {
     paddingTop: "140px",
     marginBottom: "50px",
+
+    [theme.breakpoints.down("xs")]: {
+      paddingTop: "100px",
+      marginBottom: "20px",
+    },
   },
 
   loading: {
