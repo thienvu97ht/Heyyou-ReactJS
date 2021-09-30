@@ -1,14 +1,24 @@
 import {
   Badge,
   Box,
+  Collapse,
   Container,
+  Drawer,
   IconButton,
+  List,
+  ListItem,
   Menu,
   MenuItem,
   TextField,
   withStyles,
 } from "@material-ui/core";
-import { Search, ShoppingCart } from "@material-ui/icons";
+import {
+  ExpandLess,
+  ExpandMore,
+  Search,
+  ShoppingCart,
+} from "@material-ui/icons";
+import MenuIcon from "@material-ui/icons/Menu";
 import categoryApi from "api/categoryApi";
 import { getProductsInCart } from "app/cartSlice";
 import { cartItemsCountSelector } from "pages/Cart/selectors";
@@ -47,6 +57,9 @@ function Header() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
 
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [listOpen, setListOpen] = useState(false);
+
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
@@ -82,6 +95,30 @@ function Header() {
       pathname: `/search`,
       search: `_search=${search}`,
     });
+  };
+
+  const handleSearchMobile = (e) => {
+    setDrawerOpen(false);
+
+    e.preventDefault();
+    const search = e.target.search.value;
+
+    history.push({
+      pathname: `/search`,
+      search: `_search=${search}`,
+    });
+  };
+
+  const handleOpenNavMobile = () => {
+    setDrawerOpen(true);
+  };
+
+  const handleCloseNavMobile = () => {
+    setDrawerOpen(false);
+  };
+
+  const handleShowList = () => {
+    setListOpen(!listOpen);
   };
 
   return (
@@ -132,6 +169,28 @@ function Header() {
             </Box>
           </Box>
         </Container>
+        <Box className={classes.headerMobile}>
+          <Box className={classes.navLeft}>
+            <IconButton onClick={handleOpenNavMobile}>
+              <MenuIcon />
+            </IconButton>
+          </Box>
+          <Box className={classes.navCenter}>
+            <Link to="/" color="inherit">
+              <img
+                src="https://theme.hstatic.net/200000031420/1000719377/14/logo.png?v=154"
+                alt="Dương Vũ"
+              />
+            </Link>
+          </Box>
+          <Box className={classes.navRight}>
+            <Link to="/cart" color="inherit">
+              <StyledBadge badgeContent={cartItemsCount} color="secondary">
+                <ShoppingCart />
+              </StyledBadge>
+            </Link>
+          </Box>
+        </Box>
       </Box>
 
       <StyleMenus
@@ -159,6 +218,61 @@ function Header() {
           </Box>
         </MenuItem>
       </StyleMenus>
+
+      <Drawer
+        open={drawerOpen}
+        className={classes.Drawer}
+        onBackdropClick={handleCloseNavMobile}>
+        <MenuItem className={classes.inputForm}>
+          <form onSubmit={handleSearchMobile}>
+            <div>
+              <input name="search" placeholder="Tìm kiếm..." />
+              <IconButton color="inherit" type="submit">
+                <Search />
+              </IconButton>
+            </div>
+          </form>
+        </MenuItem>
+        <MenuItem onClick={handleCloseNavMobile}>
+          <Link to="/">TRANG CHỦ</Link>
+        </MenuItem>
+        <MenuItem className={classes.productLink}>
+          <List component="nav" className={classes.rootList}>
+            <ListItem>
+              <Link to="/collections/allitems" onClick={handleCloseNavMobile}>
+                SẢN PHẨM
+              </Link>
+              <IconButton size="small" onClick={handleShowList}>
+                {listOpen ? <ExpandLess /> : <ExpandMore />}
+              </IconButton>
+            </ListItem>
+            <Collapse in={listOpen} timeout="auto" unmountOnExit>
+              <List component="div" disablePadding>
+                {categories.map((category) => (
+                  <ListItem key={category.id}>
+                    <Link
+                      onClick={handleCloseNavMobile}
+                      to={`/collections/${category.name}`}
+                      className={classes.linkCategory}>
+                      {category.name.toUpperCase()}
+                    </Link>
+                  </ListItem>
+                ))}
+              </List>
+            </Collapse>
+          </List>
+        </MenuItem>
+        <MenuItem onClick={handleCloseNavMobile}>
+          <Link to="/abouts">GIỚI THIỆU</Link>
+        </MenuItem>
+        <MenuItem onClick={handleCloseNavMobile}>
+          {!isLoggedIn && <Link to="/auth">ĐĂNG NHẬP / ĐĂNG KÝ</Link>}
+
+          {isLoggedIn && (
+            <Link to="/account">{loggedInUser.fullname.toUpperCase()}</Link>
+          )}
+        </MenuItem>
+      </Drawer>
     </>
   );
 }

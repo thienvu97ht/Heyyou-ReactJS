@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core";
 export const useStyle = makeStyles((theme) => ({
   root: {
     position: "relative",
-    width: "410px",
+    maxWidth: "410px",
     margin: "0 auto",
   },
 

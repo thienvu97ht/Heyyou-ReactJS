@@ -3,8 +3,12 @@ import { makeStyles } from "@material-ui/core";
 export const useStyle = makeStyles((theme) => ({
   root: {
     position: "relative",
-    width: "410px",
     margin: "0 auto",
+    maxWidth: "410px",
+
+    [theme.breakpoints.down("xs")]: {
+      width: "326px",
+    },
   },
 
   avatar: {

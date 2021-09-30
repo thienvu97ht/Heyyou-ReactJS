@@ -1,6 +1,7 @@
 .App {
   /* text-align: center; */
   overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .App-logo {

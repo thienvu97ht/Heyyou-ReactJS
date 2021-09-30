@@ -21,6 +21,27 @@ function Brand({ imgs = [], className }) {
     speed: 1000,
     autoplaySpeed: 2000,
     cssEase: "linear",
+
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 6,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 4,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+    ],
   };
 
   return (

@@ -52,6 +52,10 @@ export const useStyles = makeStyles((theme) => ({
         },
       },
     },
+
+    [theme.breakpoints.down("sm")]: {
+      display: "none",
+    },
   },
 
   menuProducts: {
@@ -127,5 +131,130 @@ export const useStyles = makeStyles((theme) => ({
         },
       },
     },
+  },
+
+  headerMobile: {
+    backgroundColor: "rgba(0,0,0,0.75)",
+    color: "#fff",
+
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+
+    position: "fixed",
+    zIndex: "10",
+    left: "0",
+    top: "0",
+    right: "0",
+
+    [theme.breakpoints.up("md")]: {
+      display: "none",
+    },
+
+    "& > div": {},
+  },
+
+  navLeft: {
+    flex: "1",
+    height: "100%",
+    display: "flex",
+    alignItems: "center",
+
+    "& > button": {
+      color: "#fff",
+    },
+  },
+
+  navCenter: {
+    flex: "1",
+    height: "100%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+
+    "& > a": {
+      "& > img": {
+        maxWidth: "80px",
+        display: "block",
+        cursor: "pointer",
+      },
+    },
+  },
+
+  navRight: {
+    flex: "1",
+    height: "100%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "flex-end",
+
+    "& > a": {
+      color: "#fff",
+      padding: "12px",
+      marginRight: "10px",
+    },
+  },
+
+  Drawer: {
+    "& > div": {
+      "& > li": {
+        "&> a": {
+          fontSize: "17px",
+          textDecoration: "none",
+          color: "#000",
+          padding: "5px 0",
+        },
+      },
+    },
+  },
+
+  inputForm: {
+    marginTop: "20px",
+    marginBottom: "10px",
+
+    "& > form": {
+      "& > div": {
+        height: "40px",
+        border: "1px solid #555",
+        display: "flex",
+        alignItems: "center",
+        borderRadius: "5px",
+
+        "& > input": {
+          padding: "10px",
+          border: "none",
+
+          "&:focus-visible": {
+            outline: "none",
+          },
+        },
+      },
+    },
+  },
+
+  productLink: {},
+
+  rootList: {
+    padding: 0,
+    width: "100%",
+
+    "& > li": {
+      padding: 0,
+      display: "flex",
+      justifyContent: "space-between",
+
+      "&> a": {
+        fontSize: "17px",
+        textDecoration: "none",
+        color: "#000",
+        padding: "5px 0",
+      },
+    },
+  },
+
+  linkCategory: {
+    fontSize: "17px",
+    textDecoration: "none",
+    color: "#000",
   },
 }));

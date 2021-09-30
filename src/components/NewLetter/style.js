@@ -68,6 +68,14 @@ export const useStyles = makeStyles((theme) => ({
         padding: "0 32px",
         marginLeft: "15px",
       },
+
+      [theme.breakpoints.down("xs")]: {
+        display: "flex",
+
+        "& > button": {
+          padding: "0 20px",
+        },
+      },
     },
   },
 }));

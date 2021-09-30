@@ -31,7 +31,7 @@ export const useStyles = makeStyles((theme) => ({
 
   imgBox: {
     cursor: "pointer",
-    height: "167px",
+    height: "154px",
 
     "& img": {
       width: "100%",
@@ -41,6 +41,10 @@ export const useStyles = makeStyles((theme) => ({
 
     "&:focus-visible": {
       outline: "none",
+    },
+
+    [theme.breakpoints.down("md")]: {
+      height: "120px",
     },
   },
 }));

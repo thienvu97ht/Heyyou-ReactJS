@@ -19,6 +19,7 @@ function ProductsRelated({ category }) {
           _limit: 4,
           _sort: "sold:DESC",
           _category: category,
+          _search: "",
         });
         setProductList(data);
       } catch (error) {

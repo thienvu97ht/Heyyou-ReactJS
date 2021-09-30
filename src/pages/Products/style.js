@@ -14,6 +14,10 @@ export const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
+
+    [theme.breakpoints.down("sm")]: {
+      marginBottom: "20px",
+    },
   },
 
   pagination: {
