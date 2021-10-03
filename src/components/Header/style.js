@@ -248,6 +248,7 @@ export const useStyles = makeStyles((theme) => ({
         textDecoration: "none",
         color: "#000",
         padding: "5px 0",
+        flex: "1",
       },
     },
   },
@@ -256,5 +257,6 @@ export const useStyles = makeStyles((theme) => ({
     fontSize: "17px",
     textDecoration: "none",
     color: "#000",
+    flex: "1",
   },
 }));

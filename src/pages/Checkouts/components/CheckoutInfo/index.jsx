@@ -41,25 +41,33 @@ function CheckoutInfo({ user, onChange, address, note = "", cartItems = [] }) {
   };
 
   const handleCheckouts = async () => {
-    const newOrder = {
-      addressId: address,
-      note: note,
-      total: cartTotal,
-      productList: cartItems?.map((item) => ({
-        id: item.id,
-        quantity: item.quantity,
-      })),
-    };
+    if (!!address) {
+      const newOrder = {
+        addressId: address,
+        note: note,
+        total: cartTotal,
+        productList: cartItems?.map((item) => ({
+          id: item.id,
+          quantity: item.quantity,
+        })),
+      };
 
-    const action = addBill(newOrder);
-    await dispatch(action);
+      console.log(!!address);
 
-    // Xóa giỏ hàng cũ
-    dispatch(clearCart());
+      const action = addBill(newOrder);
+      await dispatch(action);
 
-    enqueueSnackbar("Đặt hàng thành công!!! ❤️❤️❤️", {
-      variant: "success",
-    });
+      // Xóa giỏ hàng cũ
+      dispatch(clearCart());
+
+      enqueueSnackbar("Đặt hàng thành công!!! ❤️❤️❤️", {
+        variant: "success",
+      });
+    } else {
+      enqueueSnackbar("Vui lòng thêm địa chỉ giao hàng", {
+        variant: "error",
+      });
+    }
   };
 
   return (

@@ -19,7 +19,7 @@ function SliderBanner({ imgs = [], className }) {
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
-    // autoplay: true,
+    autoplay: true,
     speed: 1000,
     autoplaySpeed: 3000,
     dotsClass: "slick-dots-1das6 slick-thumb-4t3d8",
